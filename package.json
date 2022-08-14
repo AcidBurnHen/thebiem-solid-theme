@@ -1,0 +1,24 @@
+{
+  "name": "thebiem-solid-theme",
+  "version": "0.0.1",
+  "description": "Headless Wordpress Theme built with Solid.js",
+  "author": "Marin Luic",
+  "scripts": {
+    "start": "vite",
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^4.7.4",
+    "vite": "^3.0.0",
+    "vite-plugin-solid": "^2.3.0"
+  },
+  "dependencies": {
+    "@solidjs/router": "^0.4.2",
+    "axios": "^0.27.2",
+    "sass": "^1.54.4",
+    "solid-js": "^1.4.7"
+  }
+}
