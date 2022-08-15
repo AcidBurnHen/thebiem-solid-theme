@@ -1,5 +1,6 @@
-export const getLatestPosts = `query getPosts {
-    posts(first: 10) {
+export function getLatestPosts(posts: number): string {
+  return `query getPosts {
+    posts(first: ${posts}) {
       nodes {
         guid
         title
@@ -37,4 +38,5 @@ export const getLatestPosts = `query getPosts {
         }
       }
     }
-  }`;
+  }`
+} 

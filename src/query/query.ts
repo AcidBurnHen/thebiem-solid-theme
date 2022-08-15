@@ -1,17 +1,24 @@
-import axios, { AxiosResponse } from 'axios';
+import { getLatestPosts } from './queries';
+import { Post } from './query-types';
 
-async function Query(query: string): Promise<AxiosResponse<any, any>> {
+async function Query(posts: number): Promise<Post[]> {
   const endpoint = 'https://thebiem.com/graphql';
 
-  const response = await axios({
-    url: endpoint,
-    method: 'post',
-    data: {
-      query: query,
+  const response = await fetch(endpoint, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
     },
-  });
+    body: JSON.stringify({
+      query: getLatestPosts(posts),
+    }),
+  })
+  
+  const results = await response.json();
+  const postsData = results.data.posts.nodes as Post[]
 
-  return response;
-}
+  return postsData;
+};
+
 
 export default Query;
