@@ -21,16 +21,28 @@ h1 {
   --text-primary: black;
   --text-secondary: darkred;
   --accent: darkred;
+  --underline: rgba(0, 0, 0, 0.199);
 }
 
 [data-theme='dark'] {
   --background: black;
   --text-primary: white;
   --text-secondary: grey;
-  --accent: darkred;
+  --accent: rgba(228, 127, 127, 0.788);
+  --underline: rgba(211, 211, 211, 0.171);
 }
 
 .app {
   color: var(--text-primary);
   background-color: var(--background);
+}
+
+a {
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: var(--accent);
 }

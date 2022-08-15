@@ -14,7 +14,6 @@ interface SetStoreProps {
 }
 
 export function MobileMenu(props: SetStoreProps) {
-  console.log(props.store.theme);
 
   const switchTheme = () => {
     if (props.store.theme === 'light') {

@@ -3,23 +3,25 @@ import { Post } from '../../query/query-types';
 import { createResource, createSignal, For, Show } from 'solid-js';
 import { Link } from '@solidjs/router';
 
-import "./post.scss";
+import './post.scss';
 
 export function Posts() {
   const [postNumber, setPostNumber] = createSignal(10);
-  const [postsData] = createResource<Post[], number>(postNumber, Query)
+  const [postsData] = createResource<Post[], number>(postNumber, Query);
 
   const handleScroll = () => {
-    let isAtBottom = document.documentElement.scrollHeight - document.documentElement.scrollTop <= document.documentElement.clientHeight
+    let isAtBottom =
+      document.documentElement.scrollHeight -
+        document.documentElement.scrollTop <=
+      document.documentElement.clientHeight;
 
-    if (isAtBottom) 
-      setPostNumber((postNumber) => postNumber + 10);
-  }
+    if (isAtBottom) setPostNumber((postNumber) => postNumber + 10);
+  };
 
-  window.addEventListener("scroll", handleScroll);
+  window.addEventListener('scroll', handleScroll);
 
   return (
-    <div class="posts">
+    <div class='posts'>
       <For each={postsData()}>
         {(post) => {
           const image = post.featuredImage.node;
@@ -35,32 +37,24 @@ export function Posts() {
             .concat('...');
 
           return (
-            <div>
+            <div class='posts__card'>
+              <div class="posts__author">
+                <p class="posts__author-title">Author: </p>
+                <Link class="posts__author-name" href={`/author/${author.slug}`}>{author.name}</Link>
+                <p>{date}</p>
+              </div>
               <img
-                class="posts__image"
+                class='posts__image'
                 src={image.mediaItemUrl}
                 width={image.mediaDetails.width / 2}
                 height={image.mediaDetails.height / 2}
               />
-              <h1>{post.title}</h1>
 
-              <div>
-                <For each={category}>{(cat) => <h2>{cat.name}</h2>}</For>
-              </div>
+              <h1 class='posts__title'>{post.title}</h1>
 
-              <div>
-                <p>Published: {date}</p>
-                <div>
-                  <p>
-                    Author:{' '}
-                    <Link href={`/author/${author.slug}`}>{author.name}</Link>
-                  </p>
-                </div>
-              </div>
+              <section class="posts__excerpt">{excerpt}</section>
 
-              <section>{excerpt}</section>
-
-              <Link href={`/posts/${post.slug}`}>View Post</Link>
+              <Link class="posts__view-more" href={`/posts/${post.slug}`}>View Post</Link>
             </div>
           );
         }}

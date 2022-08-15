@@ -1,7 +1,58 @@
 .posts {
   width: 100%;
 
+  &__author {
+    display: flex;
+    align-items: center;
+
+    &-title {
+        padding-left: 1rem;
+    }
+
+    &-name {
+        padding-left: 0.5rem;
+        width: 50%
+    }
+  }
+  
+  &__card {
+    border-bottom: 1px solid var(--underline);
+    padding-bottom: 1.5rem;
+    width: 100%;
+  }
+
   &__image {
     max-width: 100%;
+  }
+
+  &__title {
+    font-size: 1.2rem;
+    margin: 0 auto 0 auto;
+    padding: 1rem;
+  }
+
+  &__cat-container {
+    width: 95%;
+    display: grid;
+    grid-template-rows: repeat(5, 1.5rem);
+    row-gap: 0;
+
+    &-item {
+        width: 100%;
+        font-size: 1rem;
+        padding: 0 0.2rem;
+    }
+  }
+
+  &__excerpt {
+    margin: 0 auto 0 auto;
+    width: 90%;
+    padding-bottom: 1.3rem;
+  }
+
+  &__view-more {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
   }
 }
