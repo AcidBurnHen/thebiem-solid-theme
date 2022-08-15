@@ -1,9 +1,11 @@
-import Query from '../query/query';
-import { Post } from '../query/query-types';
+import Query from '../../query/query';
+import { Post } from '../../query/query-types';
 import { createResource, createSignal, For, Show } from 'solid-js';
 import { Link } from '@solidjs/router';
 
-export function HomePage() {
+import "./post.scss";
+
+export function Posts() {
   const [postNumber, setPostNumber] = createSignal(10);
   const [postsData] = createResource<Post[], number>(postNumber, Query)
 
@@ -17,7 +19,7 @@ export function HomePage() {
   window.addEventListener("scroll", handleScroll);
 
   return (
-    <div>
+    <div class="posts">
       <For each={postsData()}>
         {(post) => {
           const image = post.featuredImage.node;
@@ -35,6 +37,7 @@ export function HomePage() {
           return (
             <div>
               <img
+                class="posts__image"
                 src={image.mediaItemUrl}
                 width={image.mediaDetails.width / 2}
                 height={image.mediaDetails.height / 2}

@@ -16,7 +16,21 @@ h1 {
   margin-left: 100px;
 }
 
-.bigButton {
-  font-size: 2rem;
- margin: 2rem;
+:root {
+  --background: white;
+  --text-primary: black;
+  --text-secondary: darkred;
+  --accent: darkred;
+}
+
+[data-theme='dark'] {
+  --background: black;
+  --text-primary: white;
+  --text-secondary: grey;
+  --accent: darkred;
+}
+
+.app {
+  color: var(--text-primary);
+  background-color: var(--background);
 }

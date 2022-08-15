@@ -1,0 +1,35 @@
+.mobile-menu {
+  background: var(--background);
+  z-index: 1;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  width: 100%;
+
+  &__container {
+    width: 85%;
+    margin: 0 auto 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  &__link {
+    color: var(--text-primary);
+    font-size: 2rem;
+    text-decoration: none;
+  }
+
+  &__link:first {
+    row-gap: 1rem;
+  }
+
+  &__btn {
+    background-color: var(--background);
+    color: var(--text-primary);
+    font-size: 2rem;
+    border: none;
+    width: 0;
+  }
+}
