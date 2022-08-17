@@ -1,4 +1,4 @@
-.mobile-menu {
+.mobile_menu {
   background: var(--background);
   z-index: 1;
   position: fixed;
@@ -39,4 +39,8 @@
       cursor: pointer;
     }
   }
+}
+
+.test {
+  color: green;
 }

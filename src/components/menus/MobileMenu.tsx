@@ -1,5 +1,5 @@
 import { Link } from '@solidjs/router';
-import './mobile-menu.scss';
+import styles from './mobile-menu.module.scss';
 import { BsMoon } from 'solid-icons/bs';
 import {
   AiOutlineHome,
@@ -26,18 +26,18 @@ export function MobileMenu(props: SetStoreProps) {
   };
 
   return (
-    <nav class='mobile-menu'>
-      <div class='mobile-menu__container'>
-        <Link class='mobile-menu__link' href='/'>
+    <nav class={styles.mobile_menu}>
+      <div class={styles.mobile_menu__container}>
+        <Link class={styles.mobile_menu__link} href='/'>
           <AiOutlineHome />
         </Link>
-        <Link class='mobile-menu__link' href='/search'>
+        <Link class={styles.mobile_menu__link} href='/search'>
           <AiOutlineSearch />
         </Link>
-        <Link class='mobile-menu__link' href='/categories'>
+        <Link class={styles.mobile_menu__link} href='/categories'>
           <AiOutlineUpSquare />
         </Link>
-        <button class='mobile-menu__btn' onClick={switchTheme}>
+        <button class={styles.mobile_menu__btn} onClick={switchTheme}>
           <BsMoon />
         </button>
       </div>

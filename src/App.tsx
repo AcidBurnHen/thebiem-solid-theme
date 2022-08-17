@@ -5,10 +5,12 @@ import { MobileMenu } from './components/menus/MobileMenu';
 import createLocalStore from '@solid-primitives/local-store';
 import { LocalStore } from './types/localStore-types';
 
+
 const App: Component = () => {
   const [store, setStore]: LocalStore = createLocalStore("app");
 
   setStore("theme", "light");
+
 
   return (
    <div class="app" data-theme={store.theme}>

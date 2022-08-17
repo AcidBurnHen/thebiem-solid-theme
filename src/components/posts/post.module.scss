@@ -5,11 +5,11 @@
     display: flex;
     align-items: center;
 
-    &-title {
+    &_title {
         padding-left: 1rem;
     }
 
-    &-name {
+    &_name {
         padding-left: 0.5rem;
         width: 50%
     }
@@ -28,7 +28,9 @@
   &__title {
     font-size: 1.2rem;
     margin: 0 auto 0 auto;
-    padding: 1rem;
+    padding: 1rem 0;
+    text-align: center;
+    text-transform: capitalize;
   }
 
   &__cat-container {
@@ -46,11 +48,12 @@
 
   &__excerpt {
     margin: 0 auto 0 auto;
+    color: var(--text-secondary);
     width: 90%;
     padding-bottom: 1.3rem;
   }
 
-  &__view-more {
+  &__viewmore {
     display: inline-block;
     width: 100%;
     text-align: center;

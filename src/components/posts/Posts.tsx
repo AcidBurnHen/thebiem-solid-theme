@@ -3,7 +3,7 @@ import { Post } from '../../query/query-types';
 import { createResource, createSignal, For, Show } from 'solid-js';
 import { Link } from '@solidjs/router';
 
-import './post.scss';
+import styles from "./post.module.scss";
 
 export function Posts() {
   const [postNumber, setPostNumber] = createSignal(10);
@@ -21,12 +21,11 @@ export function Posts() {
   window.addEventListener('scroll', handleScroll);
 
   return (
-    <div class='posts'>
+    <div class={styles.posts}>
       <For each={postsData()}>
         {(post) => {
           const image = post.featuredImage.node;
           const author = post.author.node;
-          const category = post.categories.nodes.slice(0, 3);
           const year = post.date.substring(0, 4);
           const month = post.date.substring(5, 7);
           const day = post.date.substring(8, 10);
@@ -37,24 +36,30 @@ export function Posts() {
             .concat('...');
 
           return (
-            <div class='posts__card'>
-              <div class="posts__author">
-                <p class="posts__author-title">Author: </p>
-                <Link class="posts__author-name" href={`/author/${author.slug}`}>{author.name}</Link>
+            <div class={styles.posts__card}>
+              <div class={styles.posts__author}>
+                <p class={styles.posts__author_title}>Author: </p>
+                <Link
+                  class={styles.posts__author_name}
+                  href={`/author/${author.slug}`}>
+                  {author.name}
+                </Link>
                 <p>{date}</p>
               </div>
               <img
-                class='posts__image'
+                class={styles.posts__image}
                 src={image.mediaItemUrl}
                 width={image.mediaDetails.width / 2}
                 height={image.mediaDetails.height / 2}
               />
 
-              <h1 class='posts__title'>{post.title}</h1>
+              <h1 class={styles.posts__title}>{post.title}</h1>
 
-              <section class="posts__excerpt">{excerpt}</section>
+              <section class={styles.posts__excerpt}>{excerpt}</section>
 
-              <Link class="posts__view-more" href={`/posts/${post.slug}`}>View Post</Link>
+              <Link class={styles.posts__viewmore} href={`/posts/${post.slug}`}>
+                View Post
+              </Link>
             </div>
           );
         }}
