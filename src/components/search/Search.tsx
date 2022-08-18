@@ -42,7 +42,7 @@ export function Search() {
         />
       </form>
    <div>
-   <Show when={query() !== ""} >
+
    <For each={searchResult()}>
     {(result) => {
 
@@ -53,7 +53,6 @@ export function Search() {
         )
     }}
     </For>
-   </Show>
    </div>
     </div>
   );

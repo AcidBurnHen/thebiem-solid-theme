@@ -7,6 +7,9 @@ import {
   AiOutlineUpSquare,
 } from 'solid-icons/ai';
 import { store } from '../../types/localStore-types';
+import { Show, createSignal } from 'solid-js';
+import { CategoryMenu } from './CategoryMenu';
+import { SVGClickEvent } from '../../types/event-types';
 
 interface SetStoreProps {
   store: store;
@@ -14,6 +17,9 @@ interface SetStoreProps {
 }
 
 export function MobileMenu(props: SetStoreProps) {
+  const [state, setState] = createSignal({
+    toggleMenu: false,
+  });
 
   const switchTheme = () => {
     if (props.store.theme === 'light') {
@@ -25,8 +31,15 @@ export function MobileMenu(props: SetStoreProps) {
     console.log(props.store.theme);
   };
 
+  const toggleCatMenu: SVGClickEvent = (e) => {
+    setState({toggleMenu: !state().toggleMenu})
+  };
+
   return (
     <nav class={styles.mobile_menu}>
+      <Show when={state().toggleMenu}>
+        <CategoryMenu />
+      </Show>
       <div class={styles.mobile_menu__container}>
         <Link class={styles.mobile_menu__link} href='/'>
           <AiOutlineHome />
@@ -34,9 +47,15 @@ export function MobileMenu(props: SetStoreProps) {
         <Link class={styles.mobile_menu__link} href='/search'>
           <AiOutlineSearch />
         </Link>
-        <Link class={styles.mobile_menu__link} href='/categories'>
-          <AiOutlineUpSquare />
-        </Link>
+
+        <div>
+        <AiOutlineUpSquare
+          class={styles.mobile_menu__link}
+          onClick={toggleCatMenu}
+        />
+        </div>
+       
+
         <button class={styles.mobile_menu__btn} onClick={switchTheme}>
           <BsMoon />
         </button>

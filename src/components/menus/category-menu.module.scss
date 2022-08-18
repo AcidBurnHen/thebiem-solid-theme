@@ -1,0 +1,21 @@
+.category_menu {
+    overflow-x: scroll;
+    scroll-snap-type: y mandatory;
+    overscroll-behavior-y: contain;
+    max-width: 100%;
+    margin: 0;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--accent);
+    border-top: 1px solid var(--accent);
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    a {
+        scroll-snap-align: start;
+        padding: 0 2rem;
+    }
+}
