@@ -1,9 +1,12 @@
 import type { Component } from 'solid-js';
 import {Routes, Route} from "@solidjs/router";
-import { Posts } from './components/posts/Posts';
-import { MobileMenu } from './components/menus/MobileMenu';
+
 import createLocalStore from '@solid-primitives/local-store';
 import { LocalStore } from './types/localStore-types';
+
+import { Posts } from './components/posts/Posts';
+import { MobileMenu } from './components/menus/MobileMenu';
+import { Search } from './components/search/Search';
 
 
 const App: Component = () => {
@@ -16,6 +19,7 @@ const App: Component = () => {
    <div class="app" data-theme={store.theme}>
      <Routes>
       <Route path="/" component={Posts} />
+      <Route path="/search" component={Search} />
     </Routes>
 
     <MobileMenu store={store} setStore={setStore}/>

@@ -1,5 +1,5 @@
 export function getLatestPosts(posts: number): string {
-  return `query getPosts {
+  return `query getLatestPosts {
     posts(first: ${posts}) {
       nodes {
         guid
@@ -38,5 +38,21 @@ export function getLatestPosts(posts: number): string {
         }
       }
     }
-  }`
-} 
+  }`;
+}
+
+export function searchPosts(searchTerm: string): string {
+  console.log(searchTerm)
+
+  return `
+  query searchPosts {
+    posts(where: {search: "${searchTerm}" }, first: 10) {
+      edges {
+        node {
+          title
+        }
+      }
+    }
+  }
+  `;
+}

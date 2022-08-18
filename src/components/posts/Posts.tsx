@@ -1,4 +1,4 @@
-import Query from '../../query/query';
+import {PostsQuery} from '../../query/query';
 import { Post } from '../../query/query-types';
 import { createResource, createSignal, For, Show } from 'solid-js';
 import { Link } from '@solidjs/router';
@@ -7,7 +7,7 @@ import styles from "./post.module.scss";
 
 export function Posts() {
   const [postNumber, setPostNumber] = createSignal(10);
-  const [postsData] = createResource<Post[], number>(postNumber, Query);
+  const [postsData] = createResource<Post[], number>(postNumber, PostsQuery);
 
   const handleScroll = () => {
     let isAtBottom =

@@ -35,3 +35,9 @@ export interface Post {
     slug: string,
     title: string
 }
+
+export type SearchResult = {
+    node: {
+        title: string
+    }
+}
