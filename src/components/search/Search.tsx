@@ -42,7 +42,7 @@ export function Search() {
         />
       </form>
    <div>
-   <Show when={!searchResult.loading} fallback={<>Searching...</>}>
+   <Show when={query() !== ""} >
    <For each={searchResult()}>
     {(result) => {
 
