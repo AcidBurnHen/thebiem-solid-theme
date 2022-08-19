@@ -1,13 +1,22 @@
-import {PostsQuery} from '../../query/query';
-import { Post } from '../../query/query-types';
-import { createResource, createSignal, For, Show } from 'solid-js';
+import { For, Resource, Setter, Show } from 'solid-js';
+import styles from './post.module.scss';
+
+import { SinglePost } from '../../query/query-types';
 import { Link } from '@solidjs/router';
 
-import styles from "./post.module.scss";
+interface PostProps {
+  postData: Resource<SinglePost[] | undefined>;
+  state: {
+    postNumber: number;
+    category?: string;
+  },
+  setState: Setter<{
+    postNumber: number;
+    category?: string;
+}>
+}
 
-export function Posts() {
-  const [postNumber, setPostNumber] = createSignal(10);
-  const [postsData] = createResource<Post[], number>(postNumber, PostsQuery);
+export function Post(props: PostProps) {
 
   const handleScroll = () => {
     let isAtBottom =
@@ -15,15 +24,16 @@ export function Posts() {
         document.documentElement.scrollTop <=
       document.documentElement.clientHeight;
 
-    if (isAtBottom) setPostNumber((postNumber) => postNumber + 10);
+    if (isAtBottom) props.setState({...props.state, postNumber: props.state.postNumber + 10});
   };
 
   window.addEventListener('scroll', handleScroll);
 
   return (
     <div class={styles.posts}>
-      <For each={postsData()}>
+      <For each={props.postData()}>
         {(post) => {
+            console.log(post.featuredImage)
           const image = post.featuredImage.node;
           const author = post.author.node;
           const year = post.date.substring(0, 4);
@@ -64,7 +74,7 @@ export function Posts() {
           );
         }}
       </For>
-      <Show when={postsData.loading}>
+      <Show when={props.postData.loading}>
         <>Loading...</>
       </Show>
     </div>

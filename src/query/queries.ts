@@ -2,7 +2,6 @@ export function getLatestPosts(posts: number): string {
   return `query getLatestPosts {
     posts(first: ${posts}) {
       nodes {
-        guid
         title
         slug
         date
@@ -64,4 +63,45 @@ export function searchPosts(searchTerm: string): string {
     }
   }
   `;
+}
+
+export function postsByCat(posts: number, category: string): string {
+  return `query postsByCat {
+    posts(where: {categoryName: "${category}"}, first: ${posts}) {
+      nodes {
+        title
+        slug
+        date
+        excerpt
+        author {
+          node {
+            name
+            id
+            avatar {
+              url
+              width
+              height
+            }
+            slug
+          }
+        }
+        featuredImage {
+          node {
+            mediaItemUrl
+            mediaDetails {
+              height
+              width
+            }
+          }
+        }
+        categories {
+          nodes {
+            name
+            categoryId
+            uri
+          }
+        }
+      }
+    }
+  }`
 }

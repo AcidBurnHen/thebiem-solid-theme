@@ -4,9 +4,10 @@ import {Routes, Route} from "@solidjs/router";
 import createLocalStore from '@solid-primitives/local-store';
 import { LocalStore } from './types/localStore-types';
 
-import { Posts } from './components/posts/Posts';
+import { LatestPosts } from './components/posts/LatestPosts';
 import { MobileMenu } from './components/menus/MobileMenu';
 import { Search } from './components/search/Search';
+import { Topics } from './components/posts/Topics';
 
 
 const App: Component = () => {
@@ -18,8 +19,9 @@ const App: Component = () => {
   return (
    <div class="app" data-theme={store.theme}>
      <Routes>
-      <Route path="/" component={Posts} />
+      <Route path="/" component={LatestPosts} />
       <Route path="/search" component={Search} />
+      <Route path="/topic/:category" element={Topics} />
     </Routes>
 
     <MobileMenu store={store} setStore={setStore}/>

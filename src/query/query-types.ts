@@ -24,16 +24,16 @@ type featuredImage = {node: {
     }
 }}
 
-export interface Post {
+export interface SinglePost {
     author: author,
-    categories: categories,
+    categories?: categories,
     date: string,
     excerpt: string,
     featuredImage: featuredImage,
-    guid: string,
     slug: string,
     title: string
 }
+
 
 export type SearchResult = {
     node: {

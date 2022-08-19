@@ -1,11 +1,12 @@
-import { getLatestPosts, searchPosts } from './queries';
-import { Post, SearchResult } from './query-types';
+import { Accessor } from 'solid-js';
+import { getLatestPosts, postsByCat, searchPosts } from './queries';
+import { SinglePost, SearchResult } from './query-types';
 
 async function Query(queryType: string): Promise<any> {
   const endpoint = 'https://thebiem.com/graphql';
 
   const response = await fetch(endpoint, {
-    method: 'POST',
+    method: 'Post',
     headers: {
       'Content-Type': 'application/json',
     },
@@ -25,11 +26,30 @@ export async function SearchQuery(searchTerm: string): Promise<SearchResult[]> {
   return searchData.posts.edges as SearchResult[]
 }
 
-export async function PostsQuery(posts: number): Promise<Post[]> {
-  const postsData = await Query(getLatestPosts(posts));
+type PostInfo = {
+  postNumber: number;
+}
 
-  return postsData.posts.nodes as Post[];
+export async function PostsQuery(state: PostInfo): Promise<SinglePost[]> {
+  console.log(state)
+  const postsData = await Query(getLatestPosts(state.postNumber));
+
+  console.log(state);
+
+  return postsData.posts.nodes as SinglePost[];
 };
+
+type CatInfo = {
+  postNumber: number,
+  category: string
+}
+
+export async function TopicQuery(state: CatInfo): Promise<SinglePost[]> {
+  const categoryData = await Query(postsByCat(state.postNumber, state.category))
+
+  console.log(categoryData.posts.nodes)
+  return categoryData.posts.nodes as SinglePost[]
+}
 
 
 
