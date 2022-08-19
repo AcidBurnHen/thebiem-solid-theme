@@ -1,8 +1,9 @@
 import { Link } from '@solidjs/router';
-import { createSignal, createResource, For } from 'solid-js';
+import { createSignal, createResource, For, Show } from 'solid-js';
 import { SearchQuery } from '../../query/query';
 import { SearchResult } from '../../query/query-types';
 import { OnKeyboardEvent, OnInputEvent } from '../../types/event-types';
+import { Loader } from '../loader/Loader';
 
 import styles from './search.module.scss';
 
@@ -47,11 +48,17 @@ export function Search() {
         />
       </div>
 
+      <Show when={searchResult.loading}>
+          <Loader />
+        </Show>
+
       <div class={styles.search_results}>
         <For each={searchResult()}>
           {(result) => {
             const imgSrc = result.node.featuredImage.node.mediaItemUrl;
             const imgDetails = result.node.featuredImage.node.mediaDetails;
+            console.log(result)
+
             return (
               <div class={styles.search_result}>
                 

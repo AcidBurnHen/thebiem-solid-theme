@@ -8,6 +8,7 @@ import { LatestPosts } from './components/posts/LatestPosts';
 import { MobileMenu } from './components/menus/MobileMenu';
 import { Search } from './components/search/Search';
 import { Topics } from './components/posts/Topics';
+import { SinglePost } from './components/single-post/SinglePost';
 
 
 const App: Component = () => {
@@ -22,6 +23,7 @@ const App: Component = () => {
       <Route path="/" component={LatestPosts} />
       <Route path="/search" component={Search} />
       <Route path="/topic/:category" element={Topics} />
+      <Route path="/post/:post" element={SinglePost} />
     </Routes>
 
     <MobileMenu store={store} setStore={setStore}/>

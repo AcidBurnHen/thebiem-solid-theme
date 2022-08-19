@@ -3,6 +3,7 @@ import styles from './post.module.scss';
 
 import { SinglePost } from '../../query/query-types';
 import { Link } from '@solidjs/router';
+import { Loader } from '../loader/Loader';
 
 interface PostProps {
   postData: Resource<SinglePost[] | undefined>;
@@ -67,7 +68,7 @@ export function Post(props: PostProps) {
 
               <section class={styles.posts__excerpt}>{excerpt}</section>
 
-              <Link class={styles.posts__viewmore} href={`/posts/${post.slug}`}>
+              <Link class={styles.posts__viewmore} href={`/post/${post.slug}`}>
                 View Post
               </Link>
             </div>
@@ -75,7 +76,7 @@ export function Post(props: PostProps) {
         }}
       </For>
       <Show when={props.postData.loading}>
-        <>Loading...</>
+        <Loader />
       </Show>
     </div>
   );

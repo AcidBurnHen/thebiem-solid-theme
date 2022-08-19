@@ -1,5 +1,5 @@
 import { useParams } from '@solidjs/router';
-import { createMemo, createResource, createSignal } from 'solid-js';
+import { createResource, createSignal } from 'solid-js';
 import { TopicQuery } from '../../query/query';
 import { Post } from './Post';
 

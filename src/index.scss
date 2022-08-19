@@ -36,6 +36,10 @@ h1 {
   --underline: rgba(211, 211, 211, 0.171);
 }
 
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
 .app {
   color: var(--text-primary);
   background-color: var(--background);
