@@ -18,7 +18,6 @@ type categories = {nodes: categoryNode[]}
 
 type featuredImage = {node: {
     mediaItemUrl: string,
-    altText: string
     mediaDetails: {
         height: number,
         width: number,
@@ -38,6 +37,8 @@ export interface Post {
 
 export type SearchResult = {
     node: {
-        title: string
+        title: string,
+        slug: string,
+        featuredImage: featuredImage
     }
 }

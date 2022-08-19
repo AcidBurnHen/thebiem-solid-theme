@@ -22,7 +22,6 @@ export function getLatestPosts(posts: number): string {
         featuredImage {
           node {
             mediaItemUrl
-            altText
             mediaDetails {
               height
               width
@@ -46,10 +45,20 @@ export function searchPosts(searchTerm: string): string {
 
   return `
   query searchPosts {
-    posts(where: {search: "${searchTerm}" }, first: 10) {
+    posts(where: {search: "${searchTerm}" }, first: 10)  {
       edges {
         node {
           title
+          slug
+          featuredImage {
+            node {
+              mediaItemUrl
+              mediaDetails {
+                height
+                width
+              }
+            }
+          }
         }
       }
     }

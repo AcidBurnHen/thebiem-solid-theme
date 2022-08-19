@@ -19,6 +19,7 @@ interface SetStoreProps {
 export function MobileMenu(props: SetStoreProps) {
   const [state, setState] = createSignal({
     toggleMenu: false,
+    toggleMenuClass: '',
   });
 
   const switchTheme = () => {
@@ -32,7 +33,13 @@ export function MobileMenu(props: SetStoreProps) {
   };
 
   const toggleCatMenu: SVGClickEvent = (e) => {
-    setState({toggleMenu: !state().toggleMenu})
+    if (!state().toggleMenu) {
+      setState({ ...state(), toggleMenuClass: styles.toggleCat });
+    } else {
+      setState({ ...state(), toggleMenuClass: styles.hideCat });
+    }
+
+    setState({ ...state(), toggleMenu: !state().toggleMenu });
   };
 
   return (
@@ -41,24 +48,23 @@ export function MobileMenu(props: SetStoreProps) {
         <CategoryMenu />
       </Show>
       <div class={styles.mobile_menu__container}>
-        <Link class={styles.mobile_menu__link} href='/'>
+        <Link class={styles.mobile_menu__btn} href='/'>
           <AiOutlineHome />
         </Link>
-        <Link class={styles.mobile_menu__link} href='/search'>
+        <Link
+          class={styles.mobile_menu__btn}
+          href='/search'>
           <AiOutlineSearch />
         </Link>
 
         <div>
-        <AiOutlineUpSquare
-          class={styles.mobile_menu__link}
-          onClick={toggleCatMenu}
-        />
+          <AiOutlineUpSquare
+            class={`${styles.mobile_menu__toggle} ${state().toggleMenuClass}`}
+            onClick={toggleCatMenu}
+          />
         </div>
-       
 
-        <button class={styles.mobile_menu__btn} onClick={switchTheme}>
-          <BsMoon />
-        </button>
+        <BsMoon class={styles.mobile_menu__btn} onClick={switchTheme} />
       </div>
     </nav>
   );
