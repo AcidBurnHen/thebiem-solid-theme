@@ -34,7 +34,6 @@ export function Post(props: PostProps) {
     <div class={styles.posts}>
       <For each={props.postData()}>
         {(post) => {
-            console.log(post.featuredImage)
           const image = post.featuredImage.node;
           const author = post.author.node;
           const year = post.date.substring(0, 4);

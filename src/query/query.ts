@@ -20,10 +20,14 @@ async function Query(queryType: string): Promise<any> {
   return results.data;
 }
 
-export async function SearchQuery(searchTerm: string): Promise<SearchResult[]> {
-  const searchData = await Query(searchPosts(searchTerm)); 
-  
-  return searchData.posts.edges as SearchResult[]
+type SearchInfo = {
+  postNumber: number;
+  query: string;
+}
+
+export async function SearchQuery(state: SearchInfo): Promise<SinglePost[]> {
+  const searchData = await Query(searchPosts(state.postNumber, state.query)); 
+  return searchData.posts.nodes as SinglePost[]
 }
 
 type PostInfo = {
@@ -31,11 +35,7 @@ type PostInfo = {
 }
 
 export async function PostsQuery(state: PostInfo): Promise<SinglePost[]> {
-  console.log(state)
   const postsData = await Query(getLatestPosts(state.postNumber));
-
-  console.log(state);
-
   return postsData.posts.nodes as SinglePost[];
 };
 
@@ -45,9 +45,7 @@ type CatInfo = {
 }
 
 export async function TopicQuery(state: CatInfo): Promise<SinglePost[]> {
-  const categoryData = await Query(postsByCat(state.postNumber, state.category))
-
-  console.log(categoryData.posts.nodes)
+  const categoryData = await Query(postsByCat(state.postNumber, state.category));
   return categoryData.posts.nodes as SinglePost[]
 }
 

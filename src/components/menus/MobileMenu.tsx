@@ -8,8 +8,7 @@ import {
 } from 'solid-icons/ai';
 import { store } from '../../types/localStore-types';
 import { Show, createSignal } from 'solid-js';
-import { CategoryMenu } from './CategoryMenu';
-import { SVGClickEvent } from '../../types/event-types';
+import { CategoryMenu } from './submenus/CategoryMenu';
 
 interface SetStoreProps {
   store: store;
@@ -18,8 +17,8 @@ interface SetStoreProps {
 
 export function MobileMenu(props: SetStoreProps) {
   const [state, setState] = createSignal({
-    toggleMenu: false,
-    toggleMenuClass: '',
+    toggleCat: false,
+    catMenuClass: '',
   });
 
   const switchTheme = () => {
@@ -28,23 +27,48 @@ export function MobileMenu(props: SetStoreProps) {
     } else {
       props.setStore('theme', 'light');
     }
-
-    console.log(props.store.theme);
   };
 
-  const toggleCatMenu: SVGClickEvent = (e) => {
-    if (!state().toggleMenu) {
-      setState({ ...state(), toggleMenuClass: styles.toggleCat });
+  type Toggle = (
+    toggle: boolean,
+    toggleClass: string,
+    menu: string,
+    toggledStyle: string,
+    closedStyle: string
+  ) => void;
+
+  const toggle: Toggle = (
+    toggle,
+    toggleclass,
+    menu,
+    toggledStyle,
+    closedStyle
+  ) => {
+    let theMenu = menu;
+    let toggleMenu = toggleclass;
+    if (!toggle) {
+      setState({ ...state(), [theMenu]: toggledStyle });
     } else {
-      setState({ ...state(), toggleMenuClass: styles.hideCat });
+      setState({ ...state(), [theMenu]: closedStyle });
     }
 
-    setState({ ...state(), toggleMenu: !state().toggleMenu });
+    setState({ ...state(), [toggleMenu]: !toggle });
   };
+
+  const toggleCatMenu = () => {
+    toggle(
+      state().toggleCat,
+      'toggleCat',
+      'catMenuClass',
+      styles.toggleCat,
+      styles.hideCat
+    );
+  };
+
 
   return (
     <nav class={styles.mobile_menu}>
-      <Show when={state().toggleMenu}>
+      <Show when={state().catMenuClass.startsWith('_toggleCat')}>
         <CategoryMenu />
       </Show>
       <div class={styles.mobile_menu__container}>
@@ -59,7 +83,7 @@ export function MobileMenu(props: SetStoreProps) {
 
         <div>
           <AiOutlineUpSquare
-            class={`${styles.mobile_menu__toggle} ${state().toggleMenuClass}`}
+            class={`${styles.mobile_menu__toggle} ${state().catMenuClass}`}
             onClick={toggleCatMenu}
           />
         </div>

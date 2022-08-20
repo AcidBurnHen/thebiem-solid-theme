@@ -23,7 +23,7 @@ h1 {
 :root {
   --background: white;
   --text-primary: black;
-  --text-secondary: rgb(16, 16, 16);
+  --text-secondary: rgba(66, 66, 66, 0.555);
   --accent: darkred;
   --underline: rgba(0, 0, 0, 0.199);
 }
@@ -31,7 +31,7 @@ h1 {
 [data-theme='dark'] {
   --background: rgb(16, 16, 16);
   --text-primary: white;
-  --text-secondary: rgb(201, 201, 201);
+  --text-secondary: rgba(255, 255, 255, 0.575);
   --accent: rgba(228, 127, 127, 0.788);
   --underline: rgba(211, 211, 211, 0.171);
 }

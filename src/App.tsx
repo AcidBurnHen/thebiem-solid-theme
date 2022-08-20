@@ -6,7 +6,7 @@ import { LocalStore } from './types/localStore-types';
 
 import { LatestPosts } from './components/posts/LatestPosts';
 import { MobileMenu } from './components/menus/MobileMenu';
-import { Search } from './components/search/Search';
+import { SearchPosts } from './components/search/SearchPosts';
 import { Topics } from './components/posts/Topics';
 import { SinglePost } from './components/single-post/SinglePost';
 
@@ -16,12 +16,11 @@ const App: Component = () => {
 
   setStore("theme", "light");
 
-
   return (
    <div class="app" data-theme={store.theme}>
      <Routes>
       <Route path="/" component={LatestPosts} />
-      <Route path="/search" component={Search} />
+      <Route path="/search" component={SearchPosts} />
       <Route path="/topic/:category" element={Topics} />
       <Route path="/post/:post" element={SinglePost} />
     </Routes>
