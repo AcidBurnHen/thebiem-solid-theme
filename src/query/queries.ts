@@ -6,7 +6,6 @@ const PostQueryTemplate = `nodes {
   author {
     node {
       name
-      id
       avatar {
         url
         width
@@ -55,4 +54,33 @@ export function postsByCat(posts: number, category: string): string {
     posts(where: {categoryName: "${category}"}, first: ${posts}) {
       ${PostQueryTemplate}
   }`;
+}
+
+export function singlePostBySlug(slug: string): string {
+  return `query singlePostBySlug {
+    postBy(slug: "${slug}") {
+        content(format: RENDERED)
+        title
+        featuredImage {
+          node {
+            mediaItemUrl
+            mediaDetails {
+              width
+              height
+            }
+          }
+        }
+        author {
+          node {
+            avatar {
+              url
+              width
+              height
+            }
+            name
+            slug
+          }
+        }
+      }
+  }`
 }
