@@ -43,7 +43,6 @@ export async function SinglePostQuery(state: SPState): Promise<SinglePost> {
 
 export async function AuthorQuery(state: AuthorState): Promise<AuthorData> {
   const authorData = await Query(getAuthor(state.postNumber, state.slug));
-
   return authorData.user
 }
 

@@ -51,6 +51,7 @@ export interface AuthorData {
     url: string,
   },
   name: string,
+  description: string,
   posts: {
     nodes: featuredImage[]
   }

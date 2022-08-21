@@ -93,6 +93,7 @@ export function getAuthor(posts: number, slug: string): string {
         url
       }
       name
+      description
       posts(first: ${posts}) {
         nodes {
           featuredImage {
