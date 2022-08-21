@@ -45,3 +45,38 @@ export interface SinglePost {
     title: string;
   };
 }
+
+export interface AuthorData {
+  avatar: {
+    url: string,
+  },
+  name: string,
+  posts: {
+    nodes: featuredImage[]
+  }
+}
+
+/* State types */
+
+export type SearchState = {
+  postNumber: number;
+  query: string;
+}
+
+export type PostState = {
+  postNumber: number;
+}
+
+export type SPState = {
+  slug: string
+}
+
+export type AuthorState = {
+  slug: string,
+  postNumber: number
+}
+
+export type CatState = {
+  postNumber: number,
+  category: string
+}

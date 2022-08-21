@@ -1,5 +1,5 @@
 import { Loader } from '../loader/Loader';
-import { useParams } from '@solidjs/router';
+import { Link, useParams } from '@solidjs/router';
 import { SinglePostQuery } from '../../query/query';
 import { createEffect, createResource, createSignal, Show } from 'solid-js';
 import styles from './singlepost.module.scss';
@@ -23,6 +23,8 @@ export function SinglePost() {
   createEffect(() => {
     postData();
 
+    console.log(postData()?.postBy.author.node);
+
     const container = document.getElementById('ez-toc-container');
 
     if (!tocState().show) {
@@ -38,12 +40,12 @@ export function SinglePost() {
         setTocState({ ...tocState(), text: 'Open' });
       }
 
-      setTocState({...tocState(), show: !tocState().show})
+      setTocState({ ...tocState(), show: !tocState().show });
     };
 
     return (
       <Portal mount={container?.children[0] as Node}>
-        <div class={`${styles.toc} ${tocState().show ? styles.border_b : ""}`}>
+        <div class={`${styles.toc} ${tocState().show ? styles.border_b : ''}`}>
           <p class={styles.toc_title}>Table of contents:</p>
           <button onClick={toggleTOC} class={styles.toc_btn}>
             {tocState().text}
@@ -55,7 +57,7 @@ export function SinglePost() {
 
   return (
     <div class={styles.container}>
-       <Show when={postData.loading}>
+      <Show when={postData.loading}>
         <Loader />
       </Show>
       <div class={styles.single_post}>
@@ -64,6 +66,16 @@ export function SinglePost() {
           src={postData()?.postBy.featuredImage.node.mediaItemUrl}
         />
         <h1 class={styles.single_post__title}>{postData()?.postBy.title}</h1>
+        <div class={styles.single_post__author}>
+          <img
+            class={styles.single_post__author_img}
+            src={postData()?.postBy.author.node.avatar.url}
+            height={30}
+            width={30}></img>
+            <Link class={styles.single_post__author_name} href={`/author/${postData()?.postBy.author.node.slug}`}>
+            {postData()?.postBy.author.node.name}
+            </Link>
+        </div>
         <article
           class={styles.article}
           innerHTML={postData()?.postBy.content}></article>

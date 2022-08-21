@@ -9,6 +9,7 @@ import { MobileMenu } from './components/menus/MobileMenu';
 import { SearchPosts } from './components/search/SearchPosts';
 import { Topics } from './components/posts/Topics';
 import { SinglePost } from './components/single-post/SinglePost';
+import { AuthorPage } from './components/author/AuthorPage';
 
 
 const App: Component = () => {
@@ -23,6 +24,7 @@ const App: Component = () => {
       <Route path="/search" component={SearchPosts} />
       <Route path="/topic/:category" element={Topics} />
       <Route path="/post/:post" element={SinglePost} />
+      <Route path="/author/:author" element={AuthorPage} />
     </Routes>
 
     <MobileMenu store={store} setStore={setStore}/>

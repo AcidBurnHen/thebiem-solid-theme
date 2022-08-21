@@ -45,8 +45,6 @@ export function Post(props: PostProps) {
             .substring(1, 200)
             .concat('...');
 
-            console.log(author);
-
           return (
             <div class={styles.posts__card}>
               <div class={styles.posts__author}>

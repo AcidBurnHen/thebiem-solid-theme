@@ -84,3 +84,29 @@ export function singlePostBySlug(slug: string): string {
       }
   }`
 }
+
+export function getAuthor(posts: number, slug: string): string {
+  return `
+  query getAuthor {
+    user(id: "${slug}", idType: SLUG) {
+      avatar {
+        url
+      }
+      name
+      posts(first: ${posts}) {
+        nodes {
+          featuredImage {
+            node {
+              mediaDetails {
+                height
+                width
+              }
+              mediaItemUrl
+            }
+          }
+        }
+      }
+    }
+  }
+  `
+}
