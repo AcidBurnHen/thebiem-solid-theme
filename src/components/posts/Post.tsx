@@ -1,12 +1,12 @@
 import { For, Resource, Setter, Show } from 'solid-js';
 import styles from './post.module.scss';
 
-import { SinglePost } from '../../query/query-types';
+import { SPost } from '../../query/query-types';
 import { Link } from '@solidjs/router';
 import { Loader } from '../loader/Loader';
 
 interface PostProps {
-  postData: Resource<SinglePost[] | undefined>;
+  postData: Resource<SPost[] | undefined>;
   state: {
     postNumber: number;
     category?: string;

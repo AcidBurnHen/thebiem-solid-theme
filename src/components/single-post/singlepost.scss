@@ -27,3 +27,14 @@ h2 {
     display: flex;
     justify-content: center;
 }
+
+#ez-toc-container {
+    border: 1px solid var(--tiny-border);
+    border-radius: 1rem;
+    color: var(--accent);
+}
+
+
+.ez-toc-list {
+        color: var(--text-secondary);
+    }

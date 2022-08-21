@@ -1,17 +1,10 @@
 import { Loader } from '../loader/Loader';
 import { useParams } from '@solidjs/router';
 import { SinglePostQuery } from '../../query/query';
-import {
-  createEffect,
-  createResource,
-  createSignal,
-  Show,
-} from 'solid-js';
-import { createTOCWrapper } from './accordion';
-import styles from "./singlepost.module.scss";
-import "./singlepost.scss";
-
-
+import { createEffect, createResource, createSignal, Show } from 'solid-js';
+import styles from './singlepost.module.scss';
+import './singlepost.scss';
+import { Portal } from 'solid-js/web';
 
 export function SinglePost() {
   const params = useParams();
@@ -20,32 +13,61 @@ export function SinglePost() {
     slug: params.post,
   });
 
+  const [tocState, setTocState] = createSignal({
+    show: false,
+    text: 'Open',
+  });
+
   const [postData] = createResource(state, SinglePostQuery);
 
   createEffect(() => {
-    console.log(postData()?.postBy);
+    postData();
+
+    const container = document.getElementById('ez-toc-container');
+
+    if (!tocState().show) {
+      container?.children[1].classList.add(styles.hide);
+    } else {
+      container?.children[1].classList.remove(styles.hide);
+    }
+
+    const toggleTOC = () => {
+      if (!tocState().show) {
+        setTocState({ ...tocState(), text: 'Close' });
+      } else {
+        setTocState({ ...tocState(), text: 'Open' });
+      }
+
+      setTocState({...tocState(), show: !tocState().show})
+    };
+
+    return (
+      <Portal mount={container?.children[0] as Node}>
+        <div class={`${styles.toc} ${tocState().show ? styles.border_b : ""}`}>
+          <p class={styles.toc_title}>Table of contents:</p>
+          <button onClick={toggleTOC} class={styles.toc_btn}>
+            {tocState().text}
+          </button>
+        </div>
+      </Portal>
+    );
   });
-
-
-  createEffect(() => {
-    postData()
-    createTOCWrapper();
-  })
-
-  const tableOfContent=  document.getElementById("ez-toc-container");
-  // tableOfContent?.classList.add(styles.hide)
-
 
   return (
     <div class={styles.container}>
+       <Show when={postData.loading}>
+        <Loader />
+      </Show>
       <div class={styles.single_post}>
-        <img class={styles.single_post__image} src={postData()?.postBy.featuredImage.node.mediaItemUrl} />
+        <img
+          class={styles.single_post__image}
+          src={postData()?.postBy.featuredImage.node.mediaItemUrl}
+        />
         <h1 class={styles.single_post__title}>{postData()?.postBy.title}</h1>
-        <article class={styles.article} innerHTML={postData()?.postBy.content}></article>
+        <article
+          class={styles.article}
+          innerHTML={postData()?.postBy.content}></article>
       </div>
-      <Show when={postData.loading}>
-            <Loader />
-        </Show>
     </div>
   );
 }
