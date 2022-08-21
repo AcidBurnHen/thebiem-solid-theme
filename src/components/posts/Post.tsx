@@ -45,10 +45,12 @@ export function Post(props: PostProps) {
             .substring(1, 200)
             .concat('...');
 
+            console.log(author);
+
           return (
             <div class={styles.posts__card}>
               <div class={styles.posts__author}>
-                <p class={styles.posts__author_title}>Author: </p>
+                <img class={styles.posts__author_img} src={author.avatar.url} height={30} width={30} />
                 <Link
                   class={styles.posts__author_name}
                   href={`/author/${author.slug}`}>

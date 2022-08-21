@@ -5,10 +5,11 @@
     display: flex;
     align-items: center;
 
-    &_title {
-        padding-left: 1rem;
+    &_img {
+      margin-left: .8rem;
+      border: 1px solid transparent;
+      border-radius: .55rem;
     }
-
     &_name {
         padding-left: 0.5rem;
         width: 50%
