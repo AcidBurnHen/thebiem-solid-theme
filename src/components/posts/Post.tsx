@@ -5,30 +5,27 @@ import { SPost } from '../../query/query-types';
 import { Link } from '@solidjs/router';
 import { Loader } from '../loader/Loader';
 
+import { scrollHandler } from '../../utils/scrollHandler';
+
 interface PostProps {
   postData: Resource<SPost[] | undefined>;
   state: {
     postNumber: number;
     category?: string;
-  },
+  };
   setState: Setter<{
     postNumber: number;
     category?: string;
-}>
+  }>;
 }
 
 export function Post(props: PostProps) {
-
+  
   const handleScroll = () => {
-    let isAtBottom =
-      document.documentElement.scrollHeight -
-        document.documentElement.scrollTop <=
-      document.documentElement.clientHeight;
-
-    if (isAtBottom) props.setState({...props.state, postNumber: props.state.postNumber + 10});
+    scrollHandler({ state: props.state, setState: props.setState });
   };
 
-  window.addEventListener('scroll', handleScroll);
+  window.addEventListener("scroll", handleScroll)
 
   return (
     <div class={styles.posts}>
@@ -48,7 +45,12 @@ export function Post(props: PostProps) {
           return (
             <div class={styles.posts__card}>
               <div class={styles.posts__author}>
-                <img class={styles.posts__author_img} src={author.avatar.url} height={30} width={30} />
+                <img
+                  class={styles.posts__author_img}
+                  src={author.avatar.url}
+                  height={30}
+                  width={30}
+                />
                 <Link
                   class={styles.posts__author_name}
                   href={`/author/${author.slug}`}>

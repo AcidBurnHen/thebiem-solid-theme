@@ -1,6 +1,8 @@
 import { useParams } from '@solidjs/router';
 import { createEffect, createResource, createSignal, For, Show } from 'solid-js';
 import { AuthorQuery } from '../../query/query';
+import { scrollHandler } from '../../utils/scrollHandler';
+import { Loader } from '../loader/Loader';
 import styles from './authorpage.module.scss';
 
 export function AuthorPage() {
@@ -11,10 +13,19 @@ export function AuthorPage() {
     postNumber: 10,
   });
 
+  const handleScroll = () => {
+    scrollHandler({ state: state(), setState: setState });
+  };
+
+  window.addEventListener("scroll", handleScroll)
+
   const [authorData] = createResource(state, AuthorQuery);
 
   return (
     <div>
+       <Show when={authorData.loading}>
+          <Loader />
+      </Show>
       <div class={styles.author}>
         <div class={styles.author_card}>
           <img
@@ -24,7 +35,7 @@ export function AuthorPage() {
           <h1 class={styles.author_card_title_txt}>{authorData()?.name}</h1>
           </div>
         </div>
-
+      
        <Show when={authorData()?.description}>
        <span
           class={styles.author_bio}
