@@ -1,5 +1,5 @@
 import { useParams } from '@solidjs/router';
-import { createEffect, createResource, createSignal, For } from 'solid-js';
+import { createEffect, createResource, createSignal, For, Show } from 'solid-js';
 import { AuthorQuery } from '../../query/query';
 import styles from './authorpage.module.scss';
 
@@ -20,13 +20,18 @@ export function AuthorPage() {
           <img
             class={styles.author_card_img}
             src={authorData()?.avatar.url}></img>
-          <h1 class={styles.author_card_title}>{authorData()?.name}</h1>
+          <div class={styles.author_card_title}>
+          <h1 class={styles.author_card_title_txt}>{authorData()?.name}</h1>
+          </div>
         </div>
-        <span
+
+       <Show when={authorData()?.description}>
+       <span
           class={styles.author_bio}
           innerHTML={authorData()?.description}></span>
+       </Show>
       </div>
-      <h2>Posts:</h2>
+      <h3 class={styles.posts_title}>Posts:</h3>
       <div class={styles.posts}>
         <For each={authorData()?.posts.nodes}>
           {(post) => {
