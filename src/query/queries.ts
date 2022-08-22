@@ -96,6 +96,7 @@ export function getAuthor(posts: number, slug: string): string {
       description
       posts(first: ${posts}) {
         nodes {
+          title
           featuredImage {
             node {
               mediaDetails {

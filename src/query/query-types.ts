@@ -46,6 +46,11 @@ export interface SinglePost {
   };
 }
 
+type AuthorPosts = {
+  title: string,
+  featuredImage: featuredImage
+}
+
 export interface AuthorData {
   avatar: {
     url: string,
@@ -53,7 +58,7 @@ export interface AuthorData {
   name: string,
   description: string,
   posts: {
-    nodes: featuredImage[]
+    nodes: AuthorPosts[]
   }
 }
 
