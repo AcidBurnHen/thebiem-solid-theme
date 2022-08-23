@@ -21,11 +21,17 @@ export function MobileMenu(props: SetStoreProps) {
     catMenuClass: '',
   });
 
+  const favicon = document.getElementById('favicon');
+
   const switchTheme = () => {
     if (props.store.theme === 'light') {
       props.setStore('theme', 'dark');
+      //@ts-ignore - works but there is no href type property of HTMLElement in solid.js
+      favicon.href = '/src/assets/favicondark.ico';
     } else {
       props.setStore('theme', 'light');
+      //@ts-ignore 
+      favicon.href = '/src/assets/faviconlight.ico';
     }
   };
 
@@ -65,7 +71,6 @@ export function MobileMenu(props: SetStoreProps) {
     );
   };
 
-
   return (
     <nav class={styles.mobile_menu}>
       <Show when={state().catMenuClass.startsWith('_toggleCat')}>
@@ -75,9 +80,7 @@ export function MobileMenu(props: SetStoreProps) {
         <Link class={styles.mobile_menu__btn} href='/'>
           <AiOutlineHome />
         </Link>
-        <Link
-          class={styles.mobile_menu__btn}
-          href='/search'>
+        <Link class={styles.mobile_menu__btn} href='/search'>
           <AiOutlineSearch />
         </Link>
 

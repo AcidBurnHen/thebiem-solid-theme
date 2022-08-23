@@ -22,9 +22,6 @@ export function SinglePost() {
 
   createEffect(() => {
     postData();
-
-    console.log(postData()?.postBy.author.node);
-
     const container = document.getElementById('ez-toc-container');
 
     if (!tocState().show) {
