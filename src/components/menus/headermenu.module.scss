@@ -1,3 +1,27 @@
 .headermenu {
+    position: fixed;
+    background-color: var(--background);
+    padding: 1rem 0;
     z-index: 1;
+    display: grid;
+    grid-template-columns: 20vw 60vw 20vw;
+
+    &_back, &_forward {
+        font-size: 2rem;
+    }
+
+    &_back {
+        padding-left: 1rem;
+    }
+
+    &_forward {
+        padding-right: 1rem;
+        justify-self: end;
+    }
+
+    &_title {
+        justify-self: center;
+        font-size: 1.8rem;
+        font-family: "Syncopate";
+    }
 }

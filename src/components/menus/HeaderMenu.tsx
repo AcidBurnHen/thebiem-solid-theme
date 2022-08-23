@@ -1,4 +1,6 @@
 import styles from "./headermenu.module.scss";
+import { BsArrowLeft, BsArrowRight } from "solid-icons/bs";
+
 
 export function HeaderMenu() {
 
@@ -12,8 +14,9 @@ export function HeaderMenu() {
 
   return (
     <div class={styles.headermenu}>
-      <button onClick={back}>Back now</button>
-      <button onClick={forward}>Forward</button>
+      <BsArrowLeft class={styles.headermenu_back} onClick={back}/>
+      <h1 class={styles.headermenu_title}>Thebiem</h1>
+      <BsArrowRight class={styles.headermenu_forward} onClick={forward} />
     </div>
   )
 }
