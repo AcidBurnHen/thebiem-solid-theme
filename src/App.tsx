@@ -1,4 +1,4 @@
-import { Component, createEffect, createSignal, on } from 'solid-js';
+import { Component } from 'solid-js';
 import { Routes, Route } from '@solidjs/router';
 
 import createLocalStore from '@solid-primitives/local-store';
@@ -9,8 +9,10 @@ import { LatestPosts } from './components/posts/LatestPosts';
 import { MobileMenu } from './components/menus/MobileMenu';
 import { SearchPosts } from './components/search/SearchPosts';
 import { Topics } from './components/posts/Topics';
-import { SinglePost } from './components/single-post/SinglePost';
+import { SinglePost } from './components/posts/single-post/SinglePost';
 import { AuthorPage } from './components/author/AuthorPage';
+import { LoginPage } from './components/login/LoginPage';
+import { RegisterPage } from './components/login/RegisterPage';
 
 const App: Component = () => {
   const [store, setStore]: LocalStore = createLocalStore('app');
@@ -24,6 +26,8 @@ const App: Component = () => {
         <Route path='/topic/:category' element={Topics} />
         <Route path='/post/:post' element={SinglePost} />
         <Route path='/author/:author' element={AuthorPage} />
+        <Route path='/login' element={LoginPage}/>
+        <Route path='/register' element={RegisterPage} />
       </Routes>
 
       <MobileMenu store={store} setStore={setStore} />

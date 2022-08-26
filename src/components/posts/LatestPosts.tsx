@@ -1,4 +1,4 @@
-import {PostsQuery} from '../../query/query';
+import {PostsQuery} from '../../graphQL/query/query';
 import { createResource, createSignal, For, Show } from 'solid-js';
 
 import { Post } from './Post';

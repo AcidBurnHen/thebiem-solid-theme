@@ -1,6 +1,6 @@
 import { useParams } from '@solidjs/router';
 import { createEffect, createResource, createSignal, For, Show } from 'solid-js';
-import { AuthorQuery } from '../../query/query';
+import { AuthorQuery } from '../../graphQL/query/query';
 import { scrollHandler } from '../../utils/scrollHandler';
 import { Loader } from '../loader/Loader';
 import styles from './authorpage.module.scss';

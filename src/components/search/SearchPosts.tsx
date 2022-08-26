@@ -1,5 +1,5 @@
 import { createResource, createSignal, Show } from 'solid-js';
-import { SearchQuery } from '../../query/query';
+import { SearchQuery } from '../../graphQL/query/query';
 import { OnInputEvent, OnKeyboardEvent } from '../../types/event-types';
 import { Loader } from '../loader/Loader';
 import { Post } from '../posts/Post';
