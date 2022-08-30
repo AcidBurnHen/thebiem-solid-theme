@@ -6,7 +6,6 @@ import { HeaderMenu } from './components/menus/HeaderMenu';
 import { MobileMenu } from './components/menus/MobileMenu';
 import { Router } from './Router';
 
-
 const App: Component = () => {
   const [store, setStore]: LocalStore = createLocalStore('app');
 

@@ -1,6 +1,6 @@
 import { createEffect, createSignal } from 'solid-js';
 import { OnInputEvent, OnSubmitForm } from '../../types/event-types';
-import { LoginUser } from '../../graphQL/mutate/mutate';
+import { LoginUser } from '../../utils/graphQL/mutate/mutate';
 import styles from './loginpage.module.scss';
 
 export function LoginPage() {

@@ -1,7 +1,7 @@
 import { For, Resource, Setter, Show } from 'solid-js';
 import styles from './post.module.scss';
 
-import { SPost } from '../../graphQL/query/query-types';
+import { SPost } from '../../utils/graphQL/query/query-types';
 import { Link } from '@solidjs/router';
 import { Loader } from '../loader/Loader';
 
