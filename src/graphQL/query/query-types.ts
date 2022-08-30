@@ -48,6 +48,7 @@ export interface SinglePost {
 
 type AuthorPosts = {
   title: string,
+  slug: string,
   featuredImage: featuredImage
 }
 

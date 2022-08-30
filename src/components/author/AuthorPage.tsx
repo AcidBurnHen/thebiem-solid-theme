@@ -1,4 +1,4 @@
-import { useParams } from '@solidjs/router';
+import { Link, useParams } from '@solidjs/router';
 import { createEffect, createResource, createSignal, For, Show } from 'solid-js';
 import { AuthorQuery } from '../../graphQL/query/query';
 import { scrollHandler } from '../../utils/scrollHandler';
@@ -17,14 +17,18 @@ export function AuthorPage() {
     scrollHandler({ state: state(), setState: setState });
   };
 
-  window.addEventListener("scroll", handleScroll)
+  window.addEventListener('scroll', handleScroll);
 
   const [authorData] = createResource(state, AuthorQuery);
 
+  createEffect(() => {
+    console.log(authorData())
+  })
+
   return (
     <div>
-       <Show when={authorData.loading}>
-          <Loader />
+      <Show when={authorData.loading}>
+        <Loader />
       </Show>
       <div class={styles.author}>
         <div class={styles.author_card}>
@@ -32,15 +36,15 @@ export function AuthorPage() {
             class={styles.author_card_img}
             src={authorData()?.avatar.url}></img>
           <div class={styles.author_card_title}>
-          <h1 class={styles.author_card_title_txt}>{authorData()?.name}</h1>
+            <h1 class={styles.author_card_title_txt}>{authorData()?.name}</h1>
           </div>
         </div>
-      
-       <Show when={authorData()?.description}>
-       <span
-          class={styles.author_bio}
-          innerHTML={authorData()?.description}></span>
-       </Show>
+
+        <Show when={authorData()?.description}>
+          <span
+            class={styles.author_bio}
+            innerHTML={authorData()?.description}></span>
+        </Show>
       </div>
       <h3 class={styles.posts_title}>Posts:</h3>
       <div class={styles.posts}>
@@ -48,7 +52,7 @@ export function AuthorPage() {
           {(post) => {
             let i = 1;
             return (
-              <div class={styles.posts_card}>
+              <Link href={`/post/${post.slug}`}  class={styles.posts_card}>
                 <div class={styles.posts_card_title}>
                   <h2 class={styles.posts_card_title_txt}>
                     {post.title.substring(0, 36)}...
@@ -57,7 +61,7 @@ export function AuthorPage() {
                 <img
                   class={styles.posts_card_img}
                   src={post.featuredImage.node.mediaItemUrl}></img>
-              </div>
+              </Link>
             );
           }}
         </For>

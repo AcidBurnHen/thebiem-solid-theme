@@ -72,7 +72,7 @@ export function MobileMenu(props: SetStoreProps) {
   };
 
   return (
-    <nav class={styles.mobile_menu}>
+      <nav class={styles.mobile_menu}>
       <Show when={state().catMenuClass.startsWith('_toggleCat')}>
         <CategoryMenu />
       </Show>

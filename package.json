@@ -20,6 +20,6 @@
     "@solidjs/router": "^0.4.2",
     "sass": "^1.54.4",
     "solid-icons": "^1.0.1",
-    "solid-js": "^1.4.7"
+    "solid-js": "^1.5.1"
   }
 }
