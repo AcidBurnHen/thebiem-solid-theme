@@ -1,18 +1,11 @@
 import { Component } from 'solid-js';
-import { Routes, Route } from '@solidjs/router';
-
 import createLocalStore from '@solid-primitives/local-store';
 import { LocalStore } from './types/localStore-types';
 
 import { HeaderMenu } from './components/menus/HeaderMenu';
-import { LatestPosts } from './components/posts/LatestPosts';
 import { MobileMenu } from './components/menus/MobileMenu';
-import { SearchPosts } from './components/search/SearchPosts';
-import { Topics } from './components/posts/Topics';
-import { SinglePost } from './components/posts/single-post/SinglePost';
-import { AuthorPage } from './components/author/AuthorPage';
-import { LoginPage } from './components/login/LoginPage';
-import { RegisterPage } from './components/login/RegisterPage';
+import { Router } from './Router';
+
 
 const App: Component = () => {
   const [store, setStore]: LocalStore = createLocalStore('app');
@@ -20,16 +13,7 @@ const App: Component = () => {
   return (
     <div class='app' data-theme={store.theme}>
       <HeaderMenu />
-      <Routes>
-        <Route path='/' component={LatestPosts} />
-        <Route path='/search' component={SearchPosts} />
-        <Route path='/topic/:category' element={Topics} />
-        <Route path='/post/:post' element={SinglePost} />
-        <Route path='/author/:author' element={AuthorPage} />
-        <Route path='/login' element={LoginPage}/>
-        <Route path='/register' element={RegisterPage} />
-      </Routes>
-
+      <Router />
       <MobileMenu store={store} setStore={setStore} />
     </div>
   );
