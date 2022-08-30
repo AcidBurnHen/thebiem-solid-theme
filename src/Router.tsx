@@ -1,11 +1,11 @@
 import { Routes, Route } from '@solidjs/router';
-import { LatestPosts } from './components/posts/LatestPosts';
-import { SearchPosts } from './components/search/SearchPosts';
-import { Topics } from './components/posts/Topics';
-import { SinglePost } from './components/posts/single-post/SinglePost';
-import { AuthorPage } from './components/author/AuthorPage';
-import { LoginPage } from './components/login/LoginPage';
-import { RegisterPage } from './components/login/RegisterPage';
+import { LatestPosts } from './pages/posts/LatestPosts';
+import { SearchPosts } from './pages/search/SearchPosts';
+import { Topics } from './pages/posts/Topics';
+import { SinglePost } from './pages/posts/single-post/SinglePost';
+import { AuthorPage } from './pages/author/AuthorPage';
+import { LoginPage } from './pages/login/LoginPage';
+import { RegisterPage } from './pages/register/RegisterPage';
 
 export function Router() {
     return (

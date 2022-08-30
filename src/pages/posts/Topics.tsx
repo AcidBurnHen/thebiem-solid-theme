@@ -1,7 +1,7 @@
 import { useParams } from '@solidjs/router';
 import { createResource, createSignal } from 'solid-js';
 import { TopicQuery } from '../../utils/graphQL/query/query';
-import { Post } from './Post';
+import { Post } from '../../components/post/Post';
 
 export function Topics() {
   const params = useParams();

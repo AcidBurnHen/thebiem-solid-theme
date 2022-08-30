@@ -1,4 +1,4 @@
-import { Loader } from '../../loader/Loader';
+import { Loader } from '../../../components/loader/Loader';
 import { Link, useParams } from '@solidjs/router';
 import { SinglePostQuery } from "../../../utils/graphQL/query/query";
 import { createEffect, createResource, createSignal, Show } from 'solid-js';

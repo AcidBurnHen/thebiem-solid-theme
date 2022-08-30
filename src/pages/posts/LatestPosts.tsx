@@ -1,7 +1,7 @@
 import {PostsQuery} from '../../utils/graphQL/query/query';
 import { createResource, createSignal, For, Show } from 'solid-js';
 
-import { Post } from './Post';
+import { Post } from '../../components/post/Post';
 
 export function LatestPosts() {
   const [state, setState] = createSignal({
