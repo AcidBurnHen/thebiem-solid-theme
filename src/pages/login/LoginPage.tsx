@@ -1,4 +1,5 @@
 import { createSignal } from 'solid-js';
+import { Portal } from 'solid-js/web/types';
 import { OnInputEvent, OnSubmitForm } from '../../types/event-types';
 import { LoginUser } from '../../utils/graphQL/mutate/mutate';
 import styles from './loginpage.module.scss';
@@ -30,7 +31,7 @@ export function LoginPage() {
 
   return (
     <div>
-      <form onSubmit={handleSubmit} class={styles.login_form}>
+      <form id="form" onSubmit={handleSubmit} class={styles.login_form}>
         <label for='name'>Username:</label>
         <input onInput={handleName} type='text' id='name' />
         <label for='pass'>Password:</label>

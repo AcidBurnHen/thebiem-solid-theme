@@ -41,7 +41,7 @@ export function SinglePost() {
     };
 
     return (
-      <Portal mount={container?.children[0] as Node}>
+      <Portal mount={container?.children[0]!}>
         <div class={`${styles.toc} ${tocState().show ? styles.border_b : ''}`}>
           <p class={styles.toc_title}>Table of contents:</p>
           <button onClick={toggleTOC} class={styles.toc_btn}>
