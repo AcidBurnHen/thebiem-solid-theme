@@ -1,20 +1,44 @@
+const userData = `
+user {
+  jwtAuthExpiration
+  jwtAuthToken
+  jwtRefreshToken
+  name
+  slug
+  avatar {
+    url
+  }
+}`;
+
 export function loginUserMutation(username: string, pass: string) {
-    return `
+  return `
     mutation loginUser {
-        login(input: {password: "${pass}", username: "${username}"}) {
-          user {
-            jwtAuthToken
-            jwtAuthExpiration
-            jwtRefreshToken
-            jwtUserSecret
-            name
-            slug
-            avatar {
-              url
-            }
-          }
-          authToken
+        login(input: {
+          password: "${pass}", 
+          username: "${username}"
+        }) {
+         ${userData}
         }
       }
-    `
+    `;
+}
+
+export function registerUserMutation(
+  username: string,
+  nickname: string,
+  email: string,
+  pass: string
+) {
+  return `
+  mutation registerUser {
+    registerUser(input: {
+      username: "${username}",
+      nickname: "${nickname}"
+      email: "${email}",
+      password: "${pass}"
+    }) {
+      ${userData}
+    }
+  }
+  `;
 }

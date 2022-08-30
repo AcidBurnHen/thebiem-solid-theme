@@ -23,7 +23,8 @@ export function LoginPage() {
     let data
     if(check)
     data = await LoginUser(formState())
-    console.log(data)
+    console.log(data);
+    /* Need to decide what approach to use for storing the JWT */
   };
 
 
