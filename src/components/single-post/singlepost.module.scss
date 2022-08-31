@@ -41,34 +41,3 @@
     margin-bottom: 3rem;
     color: var(--text-secondary);
 }
-
-.hide {
-    display: none;
-}
-
-.border_b {
-    border-bottom: 1px solid var(--tiny-border);
-}
-
-.toc {
-    display: grid;
-    align-items: center;
-    height: 4rem;
-
-    &_title {
-        margin-left: 1rem;
-        grid-column: 1;
-    }
-
-    &_btn {
-        margin-right: 1rem;
-        color: var(--accent);
-        background-color: var(--background);
-        border: 1px solid var(--tiny-border);
-        border-radius: .5rem;
-        justify-self: end;
-        grid-column: 2;
-        height: 4vh;
-        width: 20vw;
-    }
-}

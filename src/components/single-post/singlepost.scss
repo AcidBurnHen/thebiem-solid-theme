@@ -1,0 +1,76 @@
+// Styles for over writing Wordpress Default styles
+.wp-block-image {
+    figure, img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+._single_post__title_1j8y2_8 {
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+h1 {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+h2 {
+    font-size: 0.9rem;
+}
+
+.has-text-align-center {
+    display: flex;
+    justify-content: center;
+}
+
+#ez-toc-container {
+    border: 1px solid var(--tiny-border);
+    border-radius: 1rem;
+    color: var(--text-secondary);
+}
+
+
+.ez-toc-list {
+        color: var(--text-secondary);
+    }
+
+.wp-block-quote {
+    border: 1px solid var(--accent);
+    border-radius: .3rem;
+    padding: 1rem 0;
+    margin: 0 1rem;
+    
+    p {
+        margin-top: 0;
+        padding: 0 1rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--tiny-border);
+
+        &::before {
+            content: '❝ ';
+        }
+
+        &::after {
+            content: ' ❞'
+        }
+
+        &::before, &::after {
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+    }
+
+    cite {
+        display: block;
+        padding: 0 1rem;
+
+        &::before {
+            content: "- "
+        }
+    }
+}

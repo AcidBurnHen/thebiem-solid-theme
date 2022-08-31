@@ -37,9 +37,10 @@ export interface SPost {
   title: string;
 }
 
-export interface SinglePost {
+export interface SinglePostData {
   postBy: {
     author: author;
+    databaseId: number;
     content: string;
     featuredImage: featuredImage;
     title: string;

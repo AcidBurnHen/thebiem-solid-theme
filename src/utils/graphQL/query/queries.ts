@@ -61,6 +61,7 @@ export function singlePostBySlug(slug: string): string {
     postBy(slug: "${slug}") {
         content(format: RENDERED)
         title
+        databaseId
         featuredImage {
           node {
             mediaItemUrl
