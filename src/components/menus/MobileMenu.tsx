@@ -6,13 +6,13 @@ import {
   AiOutlineSearch,
   AiOutlineUpSquare,
 } from 'solid-icons/ai';
-import { store } from '../../types/localStore-types';
+import { theme } from '../../types/localStore-types';
 import { Show, createSignal } from 'solid-js';
 import { CategoryMenu } from './submenus/CategoryMenu';
 
 interface SetStoreProps {
-  store: store;
-  setStore: (key: string, value: string | number) => void;
+  theme: theme;
+  setTheme: (key: string, value: string | number) => void;
 }
 
 export function MobileMenu(props: SetStoreProps) {
@@ -24,12 +24,12 @@ export function MobileMenu(props: SetStoreProps) {
   const favicon = document.getElementById('favicon');
 
   const switchTheme = () => {
-    if (props.store.theme === 'light') {
-      props.setStore('theme', 'dark');
+    if (props.theme.color === 'light') {
+      props.setTheme('color', 'dark');
       //@ts-ignore - works but there is no href type property of HTMLElement in solid.js
       favicon.href = '/src/assets/favicondark.ico';
     } else {
-      props.setStore('theme', 'light');
+      props.setTheme('color', 'light');
       //@ts-ignore 
       favicon.href = '/src/assets/faviconlight.ico';
     }

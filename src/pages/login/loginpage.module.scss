@@ -1,3 +1,53 @@
-.login_form {
-    padding-top: 5rem;
+.login {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    &_form {
+        width: 80%;
+        display: grid;
+        grid-template-rows: repeat(5, 2rem);
+        align-items: center;
+        text-align: center;
+        row-gap: .9rem;
+
+        &_label {
+            font-size: 1.4rem;
+            color: var(--text-primary);
+        }
+
+        &_btn, &_input {
+            border: 1px solid var(--accent);
+            border-radius: .3rem;
+            color: var(--text-primary);
+            background-color: var(--background);
+
+            transition: all 1s ease;
+
+            &:hover {
+                transition: all 1s ease;
+                border: 1px solid var(--text-primary);
+                border-radius: 1rem;
+            }
+            
+            &:focus-visible {
+                outline: none;
+            }
+        }
+
+        &_input {
+            padding: 0.4rem .5rem;
+        }
+
+        &_btn {
+            padding: 0.5rem 0;
+            margin-top: 2rem;
+            width: 40%;
+            justify-self: center;
+            font-size: 1.2rem;
+            
+        }
+    }
 }
