@@ -6,6 +6,8 @@
     justify-content: center;
     
     &_form {
+        /* Btn adds margin which makes the content not look centered */
+        margin-top: -2rem;
         width: 80%;
         display: grid;
         grid-template-rows: repeat(5, 2rem);
@@ -43,11 +45,11 @@
 
         &_btn {
             padding: 0.5rem 0;
+            /* Form looks better but isn't vertically centered right */
             margin-top: 2rem;
             width: 40%;
             justify-self: center;
             font-size: 1.2rem;
-            
         }
     }
 }
