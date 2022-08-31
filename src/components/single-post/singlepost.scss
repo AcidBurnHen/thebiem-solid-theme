@@ -6,21 +6,11 @@
     }
 }
 
-._single_post__title_1j8y2_8 {
-    font-size: 1.2rem;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    text-transform: capitalize;
-}
-
-h1 {
-    font-size: 1.2rem;
-    margin: 0;
-}
-
-h2 {
-    font-size: 0.9rem;
+.has-text-align-center {
+    display: grid;
+    align-items: center;
+    column-gap: .5rem;
+    font-size: 1rem;
 }
 
 .has-text-align-center {
@@ -33,7 +23,6 @@ h2 {
     border-radius: 1rem;
     color: var(--text-secondary);
 }
-
 
 .ez-toc-list {
         color: var(--text-secondary);
