@@ -1,0 +1,16 @@
+.alert {
+    z-index: 10;
+    
+    &_good {
+        background-color: rgb(30, 190, 30);
+    }
+
+    &_bad {
+        background-color: rgb(175, 16, 16);
+    }
+
+    &_msg {
+        color: white;
+        text-align: center;
+    }
+}
