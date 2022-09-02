@@ -6,14 +6,16 @@
     z-index: 2;
     display: grid;
     align-items: center;
-    grid-template-columns: 20vw 60vw 20vw;
+    grid-template-columns: 80vw 20vw;
 
-    &_back, &_forward {
-        font-size: 2rem;
+    &_user {
+        color: var(--text-primary);
+        font-size: 1.6rem;
+        justify-self: center;
     }
 
     &_back {
-        padding-left: 1rem;
+        padding-left: 1vw;
     }
 
     &_forward {
@@ -22,7 +24,8 @@
     }
 
     &_title {
-        justify-self: center;
+        justify-self: start;
+        padding-left: 1rem;
         font-size: 1.7rem;
         font-family: "Syncopate";
         margin: 0;

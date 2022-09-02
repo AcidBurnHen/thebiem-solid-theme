@@ -32,8 +32,7 @@ export function RegisterPage() {
     let check = formState().username !== '' && formState().nickname !== '' && formState().email !== '' && formState().password !== '';
     let data;
     if (check) 
-    /* Need to add a conditional check to see if the user already exists in the database before trying to 
-    register, there are issues with wpGraphQL query for fetching by username so this will be added later */
+  
     data = await RegisterUser(formState());
     console.log(data);
    
