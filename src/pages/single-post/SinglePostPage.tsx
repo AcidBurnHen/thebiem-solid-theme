@@ -13,7 +13,7 @@ export function SinglePostPage() {
 
   const [postData] = createResource(state, SinglePostQuery);
 
-  // Add styling and show/hide button to table of contents
+  // Add show/hide button to table of contents
   createToC(postData)
 
   return (

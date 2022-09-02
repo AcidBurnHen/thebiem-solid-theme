@@ -21,10 +21,6 @@ export function AuthorPage() {
 
   const [authorData] = createResource(state, AuthorQuery);
 
-  createEffect(() => {
-    console.log(authorData())
-  })
-
   return (
     <div>
       <Show when={authorData.loading}>
@@ -50,7 +46,6 @@ export function AuthorPage() {
       <div class={styles.posts}>
         <For each={authorData()?.posts.nodes}>
           {(post) => {
-            let i = 1;
             return (
               <Link href={`/post/${post.slug}`}  class={styles.posts_card}>
                 <div class={styles.posts_card_title}>

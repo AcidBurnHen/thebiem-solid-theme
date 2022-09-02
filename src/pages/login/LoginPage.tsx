@@ -1,19 +1,14 @@
+import { Link } from '@solidjs/router';
 import { createSignal } from 'solid-js';
 import { OnInputEvent, OnSubmitForm } from '../../types/event-types';
 import { LoginUser } from '../../utils/graphQL/mutate/mutate';
 import styles from './loginpage.module.scss';
 
-type LoginProps = {
-  test: string;
-};
-
-export function LoginPage(props: LoginProps) {
+export function LoginPage() {
   const [formState, setFormState] = createSignal({
     username: '',
     password: '',
   });
-
-  console.log(props);
 
   const handleName: OnInputEvent = (e) => {
     setFormState({ ...formState(), username: e.currentTarget.value });
@@ -57,6 +52,10 @@ export function LoginPage(props: LoginProps) {
           Login
         </button>
       </form>
+      <div class={styles.noaccount}>
+        <p>Don't have an account?</p>
+        <Link href='/register'>Register a new one</Link>
+      </div>
     </div>
   );
 }

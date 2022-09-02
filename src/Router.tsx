@@ -6,10 +6,12 @@ import { SinglePostPage } from './pages/single-post/SinglePostPage';
 import { AuthorPage } from './pages/author/AuthorPage';
 import { LoginPage } from './pages/login/LoginPage';
 import { RegisterPage } from './pages/register/RegisterPage';
+import { ProfilePage } from './pages/profile/ProfilePage';
+
 import createLocalStore from '@solid-primitives/local-store';
 
 export function Router() {
-  const [userStore, setUserStore] = createLocalStore('app');
+  const [userStore, setUserStore] = createLocalStore('user', localStorage);
 
   return (
     <Routes>
@@ -18,8 +20,9 @@ export function Router() {
       <Route path='/topic/:category' element={<Topics />} />
       <Route path='/post/:post' element={<SinglePostPage />} />
       <Route path='/author/:author' element={<AuthorPage />} />
-      <Route path='/login' element={<LoginPage test='test' />} />
+      <Route path='/login' element={<LoginPage />} />
       <Route path='/register' element={<RegisterPage />} />
+      <Route path="/profile" element={<ProfilePage />} /> 
     </Routes>
   );
 }

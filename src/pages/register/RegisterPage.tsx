@@ -1,3 +1,4 @@
+import { Link } from '@solidjs/router';
 import { createSignal } from 'solid-js';
 import { OnInputEvent, OnSubmitForm } from '../../types/event-types';
 import { RegisterUser } from '../../utils/graphQL/mutate/mutate';
@@ -61,6 +62,10 @@ export function RegisterPage() {
           Register
         </button>
       </form>
+      <div class={styles.noaccount}>
+        <p>Already have an existing account?</p>
+        <Link href='/login'>Login to your profile</Link>
+      </div>
     </div>
   );
 }

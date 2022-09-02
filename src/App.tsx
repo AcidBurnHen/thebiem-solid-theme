@@ -7,7 +7,7 @@ import { MobileMenu } from './components/menus/MobileMenu';
 import { Router } from './Router';
 
 const App: Component = () => {
-  const [theme, setTheme]: ThemeStore = createLocalStore("app");
+  const [theme, setTheme]: ThemeStore = createLocalStore("app", localStorage);
 
   return (
     <div class='app' data-theme={theme.color}>
