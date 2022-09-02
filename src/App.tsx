@@ -2,9 +2,9 @@ import { Component } from 'solid-js';
 import createLocalStore from '@solid-primitives/local-store';
 import { ThemeStore } from './types/localStore-types';
 
-import { HeaderMenu } from './components/menus/HeaderMenu';
-import { MobileMenu } from './components/menus/MobileMenu';
-import { Router } from './Router';
+import  HeaderMenu  from './components/menus/HeaderMenu';
+import MobileMenu  from './components/menus/MobileMenu';
+import Router from './Router';
 
 const App: Component = () => {
   const [theme, setTheme]: ThemeStore = createLocalStore("app", localStorage);

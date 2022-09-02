@@ -3,11 +3,13 @@ import { createSignal } from 'solid-js';
 import { OnInputEvent, OnSubmitForm } from '../../types/event-types';
 import { LoginUser } from '../../utils/graphQL/mutate/mutate';
 import styles from './loginpage.module.scss';
+import Alert from '../../components/modals/Alert';
 
-export function LoginPage() {
+function LoginPage() {
   const [formState, setFormState] = createSignal({
     username: '',
     password: '',
+    alert: false,
   });
 
   const handleName: OnInputEvent = (e) => {
@@ -59,3 +61,5 @@ export function LoginPage() {
     </div>
   );
 }
+
+export default LoginPage;

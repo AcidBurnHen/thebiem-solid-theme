@@ -4,7 +4,7 @@ import { OnInputEvent, OnSubmitForm } from '../../types/event-types';
 import { RegisterUser } from '../../utils/graphQL/mutate/mutate';
 import styles from './registerpage.module.scss';
 
-export function RegisterPage() {
+function RegisterPage() {
   const [formState, setFormState] = createSignal({
     username: '',
     nickname: '',
@@ -30,34 +30,55 @@ export function RegisterPage() {
 
   const handleSubmit: OnSubmitForm = async (e) => {
     e.preventDefault();
-    let check = formState().username !== '' && formState().nickname !== '' && formState().email !== '' && formState().password !== '';
+    let check =
+      formState().username !== '' &&
+      formState().nickname !== '' &&
+      formState().email !== '' &&
+      formState().password !== '';
     let data;
-    if (check) 
-  
-    data = await RegisterUser(formState());
+    if (check) data = await RegisterUser(formState());
     console.log(data);
-   
   };
 
   return (
     <div class={styles.register}>
-      <form class={styles.register_form}>
+      <form onSubmit={handleSubmit} class={styles.register_form}>
         <label class={styles.register_form_label} for='username'>
           Username:
         </label>
-        <input onInput={handleUsername} class={styles.register_form_input} type='text' id='username' />
+        <input
+          onInput={handleUsername}
+          class={styles.register_form_input}
+          type='text'
+          id='username'
+        />
         <label class={styles.register_form_label} for='nickname'>
           Nickname:
         </label>
-        <input onInput={handleNickname} class={styles.register_form_input} type='text' id='nickname' />
+        <input
+          onInput={handleNickname}
+          class={styles.register_form_input}
+          type='text'
+          id='nickname'
+        />
         <label class={styles.register_form_label} for='email'>
           Email:
         </label>
-        <input onInput={handleEmail} class={styles.register_form_input} type='email' id='email' />
+        <input
+          onInput={handleEmail}
+          class={styles.register_form_input}
+          type='email'
+          id='email'
+        />
         <label class={styles.register_form_label} for='pass'>
           Password:
         </label>
-        <input onInput={handlePass} class={styles.register_form_input} type='password' id='pass' />
+        <input
+          onInput={handlePass}
+          class={styles.register_form_input}
+          type='password'
+          id='pass'
+        />
         <button class={styles.register_form_btn} type='submit'>
           Register
         </button>
@@ -69,3 +90,5 @@ export function RegisterPage() {
     </div>
   );
 }
+
+export default RegisterPage;

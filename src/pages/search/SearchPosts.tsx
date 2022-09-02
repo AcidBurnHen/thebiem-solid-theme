@@ -1,12 +1,12 @@
 import { createResource, createSignal, Show } from 'solid-js';
 import { SearchQuery } from '../../utils/graphQL/query/query';
 import { OnInputEvent, OnKeyboardEvent } from '../../types/event-types';
-import { Loader } from '../../components/loader/Loader';
-import { Post } from '../../components/post/Post';
+import Loader from '../../components/loader/Loader';
+import Post from '../../components/post/Post';
 
 import styles from './search.module.scss';
 
-export function SearchPosts() {
+function SearchPosts() {
   const [searchTerm, setSearchTerm] = createSignal('');
   const [state, setState] = createSignal({
     query: '',
@@ -55,3 +55,5 @@ export function SearchPosts() {
     </>
   );
 }
+
+export default SearchPosts;

@@ -8,7 +8,7 @@ interface AlertProps {
   msg: string;
 }
 
-export function Alert(props: AlertProps) {
+function Alert(props: AlertProps) {
   return (
     <Show when={props.show}>
       <Portal mount={document.getElementById(props.el) as HTMLElement}>
@@ -19,3 +19,5 @@ export function Alert(props: AlertProps) {
     </Show>
   );
 }
+
+export default Alert;

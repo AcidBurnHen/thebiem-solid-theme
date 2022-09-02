@@ -1,11 +1,16 @@
 import { Link, useParams } from '@solidjs/router';
-import { createEffect, createResource, createSignal, For, Show } from 'solid-js';
-import {AuthorQuery} from "../../utils/graphQL/query/query"
+import {
+  createResource,
+  createSignal,
+  For,
+  Show,
+} from 'solid-js';
+import { AuthorQuery } from '../../utils/graphQL/query/query';
 import { scrollHandler } from '../../utils/scrollHandler';
-import { Loader } from '../../components/loader/Loader';
+import Loader from '../../components/loader/Loader';
 import styles from './authorpage.module.scss';
 
-export function AuthorPage() {
+function AuthorPage() {
   const params = useParams();
 
   const [state, setState] = createSignal({
@@ -47,7 +52,7 @@ export function AuthorPage() {
         <For each={authorData()?.posts.nodes}>
           {(post) => {
             return (
-              <Link href={`/post/${post.slug}`}  class={styles.posts_card}>
+              <Link href={`/post/${post.slug}`} class={styles.posts_card}>
                 <div class={styles.posts_card_title}>
                   <h2 class={styles.posts_card_title_txt}>
                     {post.title.substring(0, 36)}...
@@ -64,3 +69,5 @@ export function AuthorPage() {
     </div>
   );
 }
+
+export default AuthorPage;

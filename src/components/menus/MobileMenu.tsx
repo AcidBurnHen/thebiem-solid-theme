@@ -8,14 +8,14 @@ import {
 } from 'solid-icons/ai';
 import { theme } from '../../types/localStore-types';
 import { Show, createSignal } from 'solid-js';
-import { CategoryMenu } from './submenus/CategoryMenu';
+import CategoryMenu from './submenus/CategoryMenu';
 
 interface SetStoreProps {
   theme: theme;
   setTheme: (key: string, value: string | number) => void;
 }
 
-export function MobileMenu(props: SetStoreProps) {
+function MobileMenu(props: SetStoreProps) {
   const [state, setState] = createSignal({
     toggleCat: false,
     catMenuClass: '',
@@ -30,7 +30,7 @@ export function MobileMenu(props: SetStoreProps) {
       favicon.href = '/src/assets/favicondark.ico';
     } else {
       props.setTheme('color', 'light');
-      //@ts-ignore 
+      //@ts-ignore
       favicon.href = '/src/assets/faviconlight.ico';
     }
   };
@@ -72,7 +72,7 @@ export function MobileMenu(props: SetStoreProps) {
   };
 
   return (
-      <nav class={styles.mobile_menu}>
+    <nav class={styles.mobile_menu}>
       <Show when={state().catMenuClass.startsWith('_toggleCat')}>
         <CategoryMenu />
       </Show>
@@ -96,3 +96,5 @@ export function MobileMenu(props: SetStoreProps) {
     </nav>
   );
 }
+
+export default MobileMenu;

@@ -3,7 +3,7 @@ import styles from './post.module.scss';
 
 import { SPost } from '../../utils/graphQL/query/query-types';
 import { Link } from '@solidjs/router';
-import { Loader } from '../loader/Loader';
+import  Loader  from '../loader/Loader';
 
 import { scrollHandler } from '../../utils/scrollHandler';
 
@@ -19,7 +19,7 @@ interface PostProps {
   }>;
 }
 
-export function Post(props: PostProps) {
+function Post(props: PostProps) {
   
   const handleScroll = () => {
     scrollHandler({ state: props.state, setState: props.setState });
@@ -82,3 +82,5 @@ export function Post(props: PostProps) {
     </div>
   );
 }
+
+export default Post;
