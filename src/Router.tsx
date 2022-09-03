@@ -11,7 +11,7 @@ import ProfilePage from './pages/profile/ProfilePage';
 import createLocalStore from '@solid-primitives/local-store';
 
 function Router() {
-  const [userStore, setUserStore] = createLocalStore('user', localStorage);
+  const [user, setUser] = createLocalStore('user', localStorage);
 
   return (
     <Routes>
