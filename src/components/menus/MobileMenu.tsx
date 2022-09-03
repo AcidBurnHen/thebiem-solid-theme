@@ -6,16 +6,16 @@ import {
   AiOutlineSearch,
   AiOutlineUpSquare,
 } from 'solid-icons/ai';
-import { theme } from '../../types/localStore-types';
+import { StoreSetter, theme } from '../../types/localStore-types';
 import { Show, createSignal } from 'solid-js';
 import CategoryMenu from './submenus/CategoryMenu';
 
-interface SetStoreProps {
+interface MobileMenuProps {
   theme: theme;
-  setTheme: (key: string, value: string | number) => void;
+  setTheme: StoreSetter
 }
 
-function MobileMenu(props: SetStoreProps) {
+function MobileMenu(props: MobileMenuProps) {
   const [state, setState] = createSignal({
     toggleCat: false,
     catMenuClass: '',

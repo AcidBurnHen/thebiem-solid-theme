@@ -1,10 +1,10 @@
-type Setter = (key: string, value: string | number) => void;
+export type StoreSetter = (key: string, value: string | number) => void;
 type Remove = (key: string) => void;
 type Clear = () => void;
 export type theme = { color: string };
 export type ThemeStore = [
   store: theme,
-  setter: Setter,
+  setter: StoreSetter,
   remove: Remove,
   clear: Clear
 ];
@@ -18,7 +18,7 @@ export type user = {
 };
 export type UserStore = [
   store: user,
-  setter: Setter,
+  setter: StoreSetter,
   remove: Remove,
   clear: Clear
 ];
