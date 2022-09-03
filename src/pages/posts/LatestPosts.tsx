@@ -1,5 +1,5 @@
 import { PostsQuery } from '../../utils/graphQL/query/query';
-import { createResource, createSignal, For, Show } from 'solid-js';
+import { createResource, createSignal } from 'solid-js';
 
 import Post from '../../components/post/Post';
 

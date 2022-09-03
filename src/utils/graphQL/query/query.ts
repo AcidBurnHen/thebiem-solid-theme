@@ -1,7 +1,7 @@
 
 import { Fetch } from '../fetch';
-import { getAuthor, getLatestPosts, postsByCat, searchPosts, singlePostBySlug } from './queries';
-import { AuthorData, AuthorState, CatState, PostState, SearchState, SinglePost, SPost, SPState } from './query-types';
+import { getAuthor, getLatestPosts, getUser, postsByCat, searchPosts, singlePostBySlug } from './queries';
+import { AuthorData, AuthorState, CatState, PostState, SearchState, SinglePostData, SPost, SPState, UserProfileData, UserState } from './query-types';
 
 export async function SearchQuery(state: SearchState): Promise<SPost[]> {
   const searchData = await Fetch(searchPosts(state.postNumber, state.query)); 
@@ -19,14 +19,19 @@ export async function TopicQuery(state: CatState): Promise<SPost[]> {
   return categoryData.posts.nodes as SPost[]
 }
 
-export async function SinglePostQuery(state: SPState): Promise<SinglePost> {
+export async function SinglePostQuery(state: SPState): Promise<SinglePostData> {
   const singlePostData = await Fetch(singlePostBySlug(state.slug));
-  return singlePostData as SinglePost;
+  return singlePostData as SinglePostData;
 }
 
 export async function AuthorQuery(state: AuthorState): Promise<AuthorData> {
   const authorData = await Fetch(getAuthor(state.postNumber, state.slug));
   return authorData.user
+}
+
+export async function UserProfileQuery(state: UserState) {
+  const userData = await Fetch(getUser(state.commentNumber, state.slug))
+  console.log(userData)
 }
 
 

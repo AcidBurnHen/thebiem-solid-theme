@@ -83,10 +83,10 @@ export function singlePostBySlug(slug: string): string {
           }
         }
       }
-  }`
+  }`;
 }
 
-export function getAuthor(posts: number, slug: string): string {
+function getUserData(slug: string, query: string) {
   return `
   query getAuthor {
     user(id: "${slug}", idType: SLUG) {
@@ -95,22 +95,44 @@ export function getAuthor(posts: number, slug: string): string {
       }
       name
       description
-      posts(first: ${posts}) {
-        nodes {
-          title
-          slug
-          featuredImage {
-            node {
-              mediaDetails {
-                height
-                width
-              }
-              mediaItemUrl
-            }
-          }
-        }
-      }
+      ${query}
     }
   }
   `
+}
+
+export function getUser(comments: number, slug: string): string {
+  const query = `
+  comments(first: ${comments}) {
+    nodes {
+      commentedOn {
+        node {
+          slug
+        }
+      }
+      content(format: RENDERED)
+      date
+    }
+  `
+  return getUserData(slug, query)
+}
+
+export function getAuthor(posts: number, slug: string): string {
+  const query = `posts(first: ${posts}) {
+    nodes {
+      title
+      slug
+      featuredImage {
+        node {
+          mediaDetails {
+            height
+            width
+          }
+          mediaItemUrl
+        }
+      }
+    }
+  }`
+
+  return getUserData(slug, query)
 }

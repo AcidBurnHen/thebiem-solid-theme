@@ -1,3 +1,5 @@
+/* Post types */
+
 type author = {
   node: {
     avatar: {
@@ -47,20 +49,42 @@ export interface SinglePostData {
   };
 }
 
+
+/* User types */
+
+interface UserData {
+  avatar: {
+    url: string,
+  },
+  name: string,
+  description: string,
+}
+
 export type AuthorPostsData = {
   title: string,
   slug: string,
   featuredImage: featuredImage
 }
 
-export interface AuthorData {
-  avatar: {
-    url: string,
-  },
-  name: string,
-  description: string,
+export interface AuthorData extends UserData {
   posts: {
     nodes: AuthorPostsData[]
+  }
+}
+
+type UserComments = {
+  commentedOn: {
+    node: {
+      slug: string
+    }
+  }
+  content: string
+  date: string
+}
+
+export interface UserProfileData extends UserData {
+  comments: {
+    nodes: UserComments[]
   }
 }
 
@@ -82,6 +106,11 @@ export type SPState = {
 export type AuthorState = {
   slug: string,
   postNumber: number
+}
+
+export type UserState = {
+  slug: string,
+  commentNumber: number
 }
 
 export type CatState = {

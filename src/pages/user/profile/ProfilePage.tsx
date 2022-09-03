@@ -1,10 +1,26 @@
 import NotLoggedIn from '../../../components/profile/NotLoggedIn';
+import { useParams } from '@solidjs/router';
+import { createEffect, createSignal, Show } from 'solid-js';
 
 function ProfilePage() {
+  const params = useParams();
+
+  const [state, setState] = createSignal({
+    params: params.user
+  })
+
+  createEffect(() => {
+    console.log(state())
+  })
+
   return (
-    <div>
-      <NotLoggedIn />
-    </div>
+    <Show when={params.user} fallback={<NotLoggedIn />}>
+        <div>
+          Profile Page
+        </div>
+    </Show>
+    
+   
   );
 }
 
