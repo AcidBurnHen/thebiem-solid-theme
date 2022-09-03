@@ -26,20 +26,32 @@ function LoginPage() {
 
   const handleSubmit: OnSubmitForm = async (e) => {
     e.preventDefault();
-    let check = formState().username !== '' && formState().password !== '';
+    let isEmpty = formState().username === '' && formState().password === '';
 
-    if (!check) {
+    if (isEmpty) {
       setAlertState({
         alert: true,
         alertMsg: 'Username/password field cannot be empty!',
       });
-    } else {
-      /* Clean up alert if it's on second attempt and user didn't close it himself */
-      setAlertState({ alert: false, alertMsg: '' });
 
-      let data = await LoginUser(formState());
-      console.log(data);
+      return;
     }
+
+    let data = await LoginUser(formState());
+
+    if (data === null) {
+      setAlertState({
+        alert: true,
+        alertMsg: 'Wrong username or password, please try again',
+      });
+
+      return;
+    }
+
+    /* Clean up alert if it's on second attempt and user didn't close it himself */
+    setAlertState({ ...alertState(), alert: false });
+
+    console.log(data);
   };
 
   return (
