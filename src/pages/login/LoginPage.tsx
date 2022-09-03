@@ -9,8 +9,12 @@ function LoginPage() {
   const [formState, setFormState] = createSignal({
     username: '',
     password: '',
-    alert: false,
   });
+
+  const [alertState, setAlertState] = createSignal({
+    alert: false,
+    alertMsg: "testing how this works with a longer alert message and if everything is centered right",
+  })
 
   const handleName: OnInputEvent = (e) => {
     setFormState({ ...formState(), username: e.currentTarget.value });
@@ -29,9 +33,16 @@ function LoginPage() {
     /* Need to decide what approach to use for storing the JWT */
   };
 
+  const openModal = () => {
+    setAlertState({...alertState(), alert: true});
+  }
+
   return (
     <div class={styles.login}>
-      <form id='form' onSubmit={handleSubmit} class={styles.login_form}>
+      <p style="margin: 4rem;" onClick={openModal}> Open
+       modal</p>
+       <Alert class={styles.alert} when={alertState().alert} alertType="bad" msg={alertState().alertMsg} />
+      <form id='login_form' onSubmit={handleSubmit} class={styles.login_form}>
         <label class={styles.login_form_label} for='name'>
           Username:
         </label>

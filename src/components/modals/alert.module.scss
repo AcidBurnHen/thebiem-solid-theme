@@ -1,6 +1,13 @@
 .alert {
     z-index: 10;
-    
+    display: grid;
+    column-gap: .7rem;
+    max-width: 70%;
+    grid-template-columns: 95% 5%;
+    padding: .5rem 1rem;
+    align-items: center;
+    justify-content: center;
+
     &_good {
         background-color: rgb(30, 190, 30);
     }
@@ -11,6 +18,12 @@
 
     &_msg {
         color: white;
+    }
+
+    &_close {
         text-align: center;
+        color: white;
+        transform: scaleX(1.5);
+        font-size: .8rem;
     }
 }
