@@ -9,6 +9,7 @@ import { AuthorQuery } from '../../utils/graphQL/query/query';
 import { scrollHandler } from '../../utils/scrollHandler';
 import Loader from '../../components/loader/Loader';
 import styles from './authorpage.module.scss';
+import UserCard from '../../components/user/UserCard';
 
 function AuthorPage() {
   const params = useParams();
@@ -31,22 +32,7 @@ function AuthorPage() {
       <Show when={authorData.loading}>
         <Loader />
       </Show>
-      <div class={styles.author}>
-        <div class={styles.author_card}>
-          <img
-            class={styles.author_card_img}
-            src={authorData()?.avatar.url}></img>
-          <div class={styles.author_card_title}>
-            <h1 class={styles.author_card_title_txt}>{authorData()?.name}</h1>
-          </div>
-        </div>
-
-        <Show when={authorData()?.description}>
-          <span
-            class={styles.author_bio}
-            innerHTML={authorData()?.description}></span>
-        </Show>
-      </div>
+     <UserCard avatar={authorData()?.avatar.url} name={authorData()?.name} description={authorData()?.description}  />
       <h3 class={styles.posts_title}>Posts:</h3>
       <div class={styles.posts}>
         <For each={authorData()?.posts.nodes}>

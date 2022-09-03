@@ -2,7 +2,7 @@ import styles from './headermenu.module.scss';
 import { BsPersonCircle } from 'solid-icons/bs';
 import { Link } from '@solidjs/router';
 import { user } from '../../types/localStore-types';
-import { createEffect, Show } from 'solid-js';
+import { Show } from 'solid-js';
 
 interface HeaderMenuProps {
   user: user
