@@ -3,27 +3,15 @@ import { BsPersonCircle } from 'solid-icons/bs';
 import { Link } from '@solidjs/router';
 import { user } from '../../types/localStore-types';
 import { Show } from 'solid-js';
-import { UserProfileData } from '../../utils/graphQL/query/query-types';
 
 interface HeaderMenuProps {
   user: user
 }
 
-type userData = {
-  user: {
-    avatar: {
-      url: string
-    }
-    slug: string
-  }
-}
-
 function HeaderMenu(props: HeaderMenuProps) {
-  const data: userData | null = JSON.parse(props.user.data);
+  const data = JSON.parse(props.user.data)
 
-  console.log(data);
-
-  let profileUrl = data?.user.slug === "" ? "/profile" : `/profile/${data?.user.slug}`
+  let profileUrl = data?.user.slug === undefined ? "/profile" : `/profile/${data?.user.slug}`
 
   return (
     <div class={styles.headermenu}>

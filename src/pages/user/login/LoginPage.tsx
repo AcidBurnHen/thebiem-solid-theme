@@ -7,7 +7,7 @@ import Alert from '../../../components/modals/Alert';
 import { StoreSetter } from '../../../types/localStore-types';
 
 interface LoginProps {
-  setUser: StoreSetter
+  setUser: StoreSetter;
 }
 
 function LoginPage(props: LoginProps) {
@@ -53,10 +53,9 @@ function LoginPage(props: LoginProps) {
       return;
     }
 
-    props.setUser("data", JSON.stringify(data));
-
-    /* Clean up alert if it's on second attempt and user didn't close it himself */
-    setAlertState({ ...alertState(), alert: false });
+    props.setUser('data', JSON.stringify(data));
+    // Using instead of useNavigate so that localStorage data is refreshed on the fly
+    location.replace(`/profile/${data.user.slug}`);
   };
 
   return (
