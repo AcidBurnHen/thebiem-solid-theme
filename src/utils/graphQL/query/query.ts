@@ -26,12 +26,12 @@ export async function SinglePostQuery(state: SPState): Promise<SinglePostData> {
 
 export async function AuthorQuery(state: AuthorState): Promise<AuthorData> {
   const authorData = await Fetch(getAuthor(state.postNumber, state.slug));
-  return authorData.user
+  return authorData.user as AuthorData
 }
 
-export async function UserProfileQuery(state: UserState) {
+export async function UserProfileQuery(state: UserState): Promise<UserProfileData> {
   const userData = await Fetch(getUser(state.commentNumber, state.slug))
-  console.log(userData)
+ return userData.user
 }
 
 

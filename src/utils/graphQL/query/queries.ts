@@ -102,9 +102,8 @@ function getUserData(slug: string, query: string) {
 }
 
 export function getUser(comments: number, slug: string): string {
-  const query = `
-  comments(first: ${comments}) {
-    nodes {
+  const query = `comments(first: ${comments}) {
+      nodes {
       commentedOn {
         node {
           slug
@@ -113,6 +112,7 @@ export function getUser(comments: number, slug: string): string {
       content(format: RENDERED)
       date
     }
+  }
   `
   return getUserData(slug, query)
 }

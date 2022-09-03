@@ -72,7 +72,7 @@ export interface AuthorData extends UserData {
   }
 }
 
-type UserComments = {
+export type UserComment = {
   commentedOn: {
     node: {
       slug: string
@@ -84,7 +84,7 @@ type UserComments = {
 
 export interface UserProfileData extends UserData {
   comments: {
-    nodes: UserComments[]
+    nodes: UserComment[]
   }
 }
 
