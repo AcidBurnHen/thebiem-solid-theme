@@ -107,6 +107,9 @@ export function getUser(comments: number, slug: string): string {
       commentedOn {
         node {
           slug
+          ... on Post {
+            title
+          }
         }
       }
       content(format: RENDERED)

@@ -1,7 +1,7 @@
 
 import { Fetch } from '../fetch';
 import { getAuthor, getLatestPosts, getUser, postsByCat, searchPosts, singlePostBySlug } from './queries';
-import { AuthorData, AuthorState, CatState, PostState, SearchState, SinglePostData, SPost, SPState, UserProfileData, UserState } from './query-types';
+import { AuthorData, CatState, PostState, SearchState, SinglePostData, SPost, SPState, UserProfileData, UserState } from './query-types';
 
 export async function SearchQuery(state: SearchState): Promise<SPost[]> {
   const searchData = await Fetch(searchPosts(state.postNumber, state.query)); 
@@ -24,14 +24,14 @@ export async function SinglePostQuery(state: SPState): Promise<SinglePostData> {
   return singlePostData as SinglePostData;
 }
 
-export async function AuthorQuery(state: AuthorState): Promise<AuthorData> {
+export async function AuthorQuery(state: UserState): Promise<AuthorData> {
   const authorData = await Fetch(getAuthor(state.postNumber, state.slug));
   return authorData.user as AuthorData
 }
 
 export async function UserProfileQuery(state: UserState): Promise<UserProfileData> {
-  const userData = await Fetch(getUser(state.commentNumber, state.slug))
- return userData.user
+  const userData = await Fetch(getUser(state.postNumber, state.slug))
+ return userData.user as UserProfileData
 }
 
 

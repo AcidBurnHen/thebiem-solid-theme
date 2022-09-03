@@ -19,11 +19,11 @@ function AuthorPage() {
     postNumber: 10,
   });
 
-  const handleScroll = () => {
+  const handleAuthorScroll = () => {
     scrollHandler({ state: state(), setState: setState });
   };
 
-  window.addEventListener('scroll', handleScroll);
+  window.addEventListener('scroll', handleAuthorScroll);
 
   const [authorData] = createResource(state, AuthorQuery);
 

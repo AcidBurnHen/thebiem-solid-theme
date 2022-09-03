@@ -76,6 +76,7 @@ export type UserComment = {
   commentedOn: {
     node: {
       slug: string
+      title: string
     }
   }
   content: string
@@ -103,14 +104,9 @@ export type SPState = {
   slug: string
 }
 
-export type AuthorState = {
-  slug: string,
-  postNumber: number
-}
-
 export type UserState = {
   slug: string,
-  commentNumber: number
+  postNumber: number
 }
 
 export type CatState = {
