@@ -95,6 +95,7 @@ function getUserData(slug: string, query: string) {
       }
       name
       description
+      slug
       ${query}
     }
   }

@@ -1,0 +1,17 @@
+.menu {
+    z-index: 1;
+    position: absolute;
+    top: 4.5rem;
+    padding-right: 6%;
+    right: 0;
+
+    &_icon {
+        font-size: 2rem;
+    }
+
+    &_modal {
+        margin-top: .5rem;
+        display: grid;
+        row-gap: .6rem;
+    }
+}

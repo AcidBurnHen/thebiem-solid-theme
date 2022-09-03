@@ -2,6 +2,7 @@ import { Show } from 'solid-js';
 import styles from './usercard.module.scss';
 
 interface UserCardProps {
+  id?: string
   avatar: string | undefined;
   name: string | undefined;
   description: string | undefined;
@@ -9,7 +10,7 @@ interface UserCardProps {
 
 function UserCard(props: UserCardProps) {
   return (
-    <div class={styles.user}>
+    <div id={props.id} class={styles.user}>
       <div class={styles.user_card}>
         <img class={styles.user_card_img} src={props.avatar}></img>
         <div class={styles.user_card_title}>

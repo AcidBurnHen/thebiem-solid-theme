@@ -58,6 +58,7 @@ interface UserData {
   },
   name: string,
   description: string,
+  slug: string,
 }
 
 export type AuthorPostsData = {
