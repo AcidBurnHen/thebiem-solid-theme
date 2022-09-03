@@ -1,7 +1,7 @@
 import { Link } from '@solidjs/router';
 import { createSignal } from 'solid-js';
-import { OnInputEvent, OnSubmitForm } from '../../types/event-types';
-import { RegisterUser } from '../../utils/graphQL/mutate/mutate';
+import { OnInputEvent, OnSubmitForm } from '../../../types/event-types';
+import { RegisterUser } from '../../../utils/graphQL/mutate/mutate';
 import styles from './registerpage.module.scss';
 
 function RegisterPage() {

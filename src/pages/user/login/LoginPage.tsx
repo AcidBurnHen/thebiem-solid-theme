@@ -1,10 +1,10 @@
 import { Link } from '@solidjs/router';
 import { createSignal } from 'solid-js';
-import { OnInputEvent, OnSubmitForm } from '../../types/event-types';
-import { LoginUser } from '../../utils/graphQL/mutate/mutate';
+import { OnInputEvent, OnSubmitForm } from '../../../types/event-types';
+import { LoginUser } from '../../../utils/graphQL/mutate/mutate';
 import styles from './loginpage.module.scss';
-import Alert from '../../components/modals/Alert';
-import { StoreSetter } from '../../types/localStore-types';
+import Alert from '../../../components/modals/Alert';
+import { StoreSetter } from '../../../types/localStore-types';
 
 interface LoginProps {
   setUser: StoreSetter

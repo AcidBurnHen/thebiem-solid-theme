@@ -17,7 +17,9 @@ function HeaderMenu(props: HeaderMenuProps) {
 
   return (
     <div class={styles.headermenu}>
+      <Link href="/" >
       <h1 class={styles.headermenu_title}>Thebiem</h1>
+      </Link>
       <Link class={styles.headermenu_user} href={profileUrl}>
       <Show when={data} fallback={<BsPersonCircle class={styles.headermenu_acc} />}> 
           <img class={styles.headermenu_user_img} src={data.user.avatar.url}></img>

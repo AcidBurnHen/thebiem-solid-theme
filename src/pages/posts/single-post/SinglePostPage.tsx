@@ -1,8 +1,8 @@
 import { useParams } from '@solidjs/router';
-import { SinglePostQuery } from '../../utils/graphQL/query/query';
+import { SinglePostQuery } from '../../../utils/graphQL/query/query';
 import { createResource, createSignal } from 'solid-js';
-import SinglePost from '../../components/single-post/SinglePost';
-import createToC from '../../components/single-post/createToC';
+import SinglePost from '../../../components/single-post/SinglePost';
+import createToC from '../../../components/single-post/createToC';
 
 function SinglePostPage() {
   const params = useParams();

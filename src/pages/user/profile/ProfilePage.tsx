@@ -1,4 +1,4 @@
-import NotLoggedIn from '../../components/profile/NotLoggedIn';
+import NotLoggedIn from '../../../components/profile/NotLoggedIn';
 
 function ProfilePage() {
   return (

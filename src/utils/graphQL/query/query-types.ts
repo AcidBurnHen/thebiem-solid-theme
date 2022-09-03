@@ -47,7 +47,7 @@ export interface SinglePostData {
   };
 }
 
-type AuthorPosts = {
+export type AuthorPostsData = {
   title: string,
   slug: string,
   featuredImage: featuredImage
@@ -60,7 +60,7 @@ export interface AuthorData {
   name: string,
   description: string,
   posts: {
-    nodes: AuthorPosts[]
+    nodes: AuthorPostsData[]
   }
 }
 
