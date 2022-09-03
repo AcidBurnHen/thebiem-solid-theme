@@ -13,8 +13,8 @@ function LoginPage() {
 
   const [alertState, setAlertState] = createSignal({
     alert: false,
-    alertMsg: "testing how this works with a longer alert message and if everything is centered right",
-  })
+    alertMsg: '',
+  });
 
   const handleName: OnInputEvent = (e) => {
     setFormState({ ...formState(), username: e.currentTarget.value });
@@ -27,21 +27,29 @@ function LoginPage() {
   const handleSubmit: OnSubmitForm = async (e) => {
     e.preventDefault();
     let check = formState().username !== '' && formState().password !== '';
-    let data;
-    if (check) data = await LoginUser(formState());
-    console.log(data);
-    /* Need to decide what approach to use for storing the JWT */
-  };
 
-  const openModal = () => {
-    setAlertState({...alertState(), alert: true});
-  }
+    if (!check) {
+      setAlertState({
+        alert: true,
+        alertMsg: 'Username/password field cannot be empty!',
+      });
+    } else {
+      /* Clean up alert if it's on second attempt and user didn't close it himself */
+      setAlertState({ alert: false, alertMsg: '' });
+
+      let data = await LoginUser(formState());
+      console.log(data);
+    }
+  };
 
   return (
     <div class={styles.login}>
-      <p style="margin: 4rem;" onClick={openModal}> Open
-       modal</p>
-       <Alert class={styles.alert} when={alertState().alert} alertType="bad" msg={alertState().alertMsg} />
+      <Alert
+        class={styles.alert}
+        when={alertState().alert}
+        alertType='bad'
+        msg={alertState().alertMsg}
+      />
       <form id='login_form' onSubmit={handleSubmit} class={styles.login_form}>
         <label class={styles.login_form_label} for='name'>
           Username:
