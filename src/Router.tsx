@@ -8,10 +8,14 @@ import LoginPage from './pages/login/LoginPage';
 import RegisterPage from './pages/register/RegisterPage';
 import ProfilePage from './pages/profile/ProfilePage';
 
-import createLocalStore from '@solid-primitives/local-store';
+import { StoreSetter } from './types/localStore-types';
 
-function Router() {
-  const [user, setUser] = createLocalStore('user', localStorage);
+interface RouterProps {
+  setUser: StoreSetter
+}
+
+function Router(props: RouterProps) {
+  
 
   return (
     <Routes>
@@ -20,7 +24,7 @@ function Router() {
       <Route path='/topic/:category' element={<Topics />} />
       <Route path='/post/:post' element={<SinglePostPage />} />
       <Route path='/author/:author' element={<AuthorPage />} />
-      <Route path='/login' element={<LoginPage />} />
+      <Route path='/login' element={<LoginPage setUser={props.setUser} />} />
       <Route path='/register' element={<RegisterPage />} />
       <Route path='/profile' element={<ProfilePage />} />
     </Routes>

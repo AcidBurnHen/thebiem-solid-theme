@@ -4,8 +4,13 @@ import { OnInputEvent, OnSubmitForm } from '../../types/event-types';
 import { LoginUser } from '../../utils/graphQL/mutate/mutate';
 import styles from './loginpage.module.scss';
 import Alert from '../../components/modals/Alert';
+import { StoreSetter } from '../../types/localStore-types';
 
-function LoginPage() {
+interface LoginProps {
+  setUser: StoreSetter
+}
+
+function LoginPage(props: LoginProps) {
   const [formState, setFormState] = createSignal({
     username: '',
     password: '',
@@ -48,10 +53,10 @@ function LoginPage() {
       return;
     }
 
+    props.setUser("data", JSON.stringify(data));
+
     /* Clean up alert if it's on second attempt and user didn't close it himself */
     setAlertState({ ...alertState(), alert: false });
-
-    console.log(data);
   };
 
   return (

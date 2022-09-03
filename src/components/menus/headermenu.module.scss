@@ -9,19 +9,20 @@
     align-items: center;
     grid-template-columns: 80vw 20vw;
 
+    &_acc {
+        font-size: 1.8rem;
+    }
+
     &_user {
         color: var(--text-primary);
         font-size: 1.6rem;
         justify-self: center;
-    }
 
-    &_back {
-        padding-left: 1vw;
-    }
-
-    &_forward {
-        padding-right: 1rem;
-        justify-self: end;
+        &_img {
+            border-radius: .5rem;
+            width: 2rem;
+            height: auto;
+        }
     }
 
     &_title {

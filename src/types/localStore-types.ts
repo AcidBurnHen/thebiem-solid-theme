@@ -9,12 +9,7 @@ export type ThemeStore = [
   clear: Clear
 ];
 export type user = {
-  avatar: string;
-  name: string;
-  slug: string;
-  token: string;
-  refreshToken: string;
-  tokenExpiration: string;
+  data: string
 };
 export type UserStore = [
   store: user,
