@@ -52,7 +52,7 @@ export interface SinglePostData {
 
 /* User types */
 
-interface UserData {
+export interface UserData {
   avatar: {
     url: string,
   },

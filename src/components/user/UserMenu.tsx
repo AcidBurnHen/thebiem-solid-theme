@@ -1,9 +1,9 @@
 import { BsPersonLinesFill, BsGear } from 'solid-icons/bs';
 import { AiOutlineLogout } from 'solid-icons/ai';
-import { createSignal, Show } from 'solid-js';
-import { Portal } from 'solid-js/web';
+import { createSignal, Show, createEffect } from 'solid-js';
 import styles from './usermenu.module.scss';
 import { Link } from '@solidjs/router';
+import { SVGClickEvent } from '../../types/event-types';
 
 interface UserMenuProps {
   slug: string | undefined;
@@ -11,24 +11,29 @@ interface UserMenuProps {
 
 function UserMenu(props: UserMenuProps) {
   const [toggle, setToggle] = createSignal(false);
+  const [logout, setLogout] = createSignal(false);
 
   const toggleUserMenu = () => {
     setToggle(!toggle());
   };
 
-  const logoutUser = () => {
-    // localStorage clear works in console but not on button click
-    localStorage.clear();
-    location.replace('/');
-    location.reload();
+  const logoutUser: SVGClickEvent = () => {
+      setLogout(true)
   };
+
+  createEffect(() => {
+    if (logout() === true) {
+        localStorage.removeItem("data");
+        location.replace("/");
+    }
+  })
 
   return (
     <div class={styles.menu}>
       <BsPersonLinesFill onClick={toggleUserMenu} class={styles.menu_icon} />
       <Show when={toggle()}>
         <div class={styles.menu_modal}>
-          <Link href={`/profile/settings/${props.slug}`}>
+          <Link href={`/profile/settings/${props?.slug}`}>
             <BsGear class={styles.menu_icon} />
           </Link>
 

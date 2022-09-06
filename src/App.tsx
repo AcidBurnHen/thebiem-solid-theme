@@ -8,7 +8,7 @@ import Router from './Router';
 
 const App: Component = () => {
   const [theme, setTheme]: ThemeStore = createLocalStore("app", localStorage);
-  const [user, setUser]: UserStore = createLocalStore('user', localStorage);
+  const [user, setUser]: UserStore = createLocalStore();
 
   
   return (
