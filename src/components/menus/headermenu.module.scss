@@ -18,6 +18,15 @@
         font-size: 1.6rem;
         justify-self: center;
 
+        &_hitbox {
+           
+            height: 2.5rem;
+            width: 2.5rem;
+            display: grid;
+            justify-content: center;
+            align-items: center;
+        }
+
         &_img {
             border-radius: .3rem;
             width: 2rem;
@@ -26,11 +35,15 @@
     }
 
     &_title {
-        color: var(--text-primary);
-        justify-self: start;
-        padding-left: 1rem;
-        font-size: 1.7rem;
-        font-family: "Syncopate";
-        margin: 0;
+        width: 40%;
+       
+        &_txt {
+            color: var(--text-primary);
+            justify-self: start;
+            padding-left: 1rem;
+            font-size: 1.7rem;
+            font-family: "Syncopate";
+            margin: 0;
+        }
     }
 }

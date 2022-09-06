@@ -7,7 +7,6 @@ import NotLoggedIn from '../../../components/user/NotLoggedIn';
 import UserCard from '../../../components/user/UserCard';
 import UserComments from '../../../components/user/UserComments';
 import Loader from '../../../components/loader/Loader';
-import UserMenu from '../../../components/user/UserMenu';
 
 import { scrollHandler } from '../../../utils/scrollHandler';
 
@@ -38,7 +37,6 @@ function ProfilePage() {
         name={userData()?.name}
         description={userData()?.description}
       />
-      <UserMenu slug={userData()?.slug}/>
       <UserComments comments={userData()?.comments.nodes} />
     </Show>
   );
