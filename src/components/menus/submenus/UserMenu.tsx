@@ -1,8 +1,7 @@
-import { BsPerson, BsGear } from 'solid-icons/bs';
-import { AiOutlineLogout } from 'solid-icons/ai';
-import { createSignal, Show, createEffect } from 'solid-js';
+import { BsGearFill, BsPersonFill, BsDoorClosedFill } from 'solid-icons/bs';
+import { createSignal, createEffect } from 'solid-js';
 import styles from './usermenu.module.scss';
-import { Link } from '@solidjs/router';
+import { Link, useNavigate } from '@solidjs/router';
 import { SVGClickEvent } from '../../../types/event-types';
 
 interface UserMenuProps {
@@ -10,32 +9,39 @@ interface UserMenuProps {
 }
 
 function UserMenu(props: UserMenuProps) {
-  
   const [logout, setLogout] = createSignal(false);
-
+  
   const logoutUser: SVGClickEvent = () => {
-      setLogout(true)
+    setLogout(true);
   };
 
   createEffect(() => {
     if (logout() === true) {
-        localStorage.removeItem("data");
-        location.replace("/");
+      localStorage.removeItem('data');
+      location.replace('/');
     }
-  })
+  });
 
   return (
     <div class={styles.menu}>
-      <BsPerson class={styles.menu_icon} />
-      
-        <div class={styles.menu_modal}>
-          <Link href={`/profile/settings/${props?.slug}`}>
-            <BsGear class={styles.menu_icon} />
-          </Link>
+      <div class={styles.menu_container} >
+        <Link class={styles.menu_link}  href={`/profile/${props.slug}`}>
+        <BsPersonFill class={styles.menu_icon}  />
+        </Link> 
+        <p class={styles.menu_title}>Profile</p>
+      </div>
 
-          <AiOutlineLogout onClick={logoutUser} class={styles.menu_icon} />
-        </div>
-     
+      <div class={styles.menu_container}>
+      <Link class={styles.menu_link}  href={`/profile/settings/${props.slug}`}>
+        <BsGearFill class={styles.menu_icon} />
+      </Link>
+      <p class={styles.menu_title}>Settings</p>
+      </div>
+
+      <div class={styles.menu_container}>
+      <BsDoorClosedFill onClick={logoutUser} class={styles.menu_icon} />
+      <p class={styles.menu_title}>Logout</p>
+      </div>
     </div>
   );
 }

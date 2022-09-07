@@ -1,19 +1,21 @@
 .posts {
   width: 100%;
-  padding-top: 4rem;
+  padding-top: 5rem;
 
   &__author {
-    display: flex;
+    display: grid;
+    grid-template-columns: 15% 50% 35%;
     align-items: center;
+    margin-bottom: .5rem;
 
     &_img {
-      margin-left: .8rem;
       border: 1px solid transparent;
       border-radius: .55rem;
+      justify-self: center;
     }
-    &_name {
-        padding-left: 0.5rem;
-        width: 50%
+
+    &_date {
+      justify-self: center;
     }
   }
   

@@ -56,7 +56,7 @@ function Post(props: PostProps) {
                   href={`/author/${author.slug}`}>
                   {author.name}
                 </Link>
-                <p>{date}</p>
+                <p class={styles.posts__author_date}>{date}</p>
               </div>
               <img
                 class={styles.posts__image}
